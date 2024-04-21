@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../node_modules/inter-font/Inter-VariableFont_slnt,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: oblique 0deg 10deg;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  font-family: "Inter";
+  min-height: 100vh;
+  display: flex;
+}

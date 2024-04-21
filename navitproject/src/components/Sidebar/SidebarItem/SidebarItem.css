@@ -1,0 +1,4 @@
+.sidebaritem {
+  display: flex;
+  flex-direction: row;
+}
