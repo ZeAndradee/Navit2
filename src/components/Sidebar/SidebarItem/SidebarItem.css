@@ -3,6 +3,11 @@
   flex-direction: row;
   padding: 10px 16px;
   align-items: center;
+  border-radius: 5px;
+}
+
+.sidebaritem:hover {
+  background-color: rgba(128, 128, 128, 0.114);
 }
 
 .sidebaritem img {

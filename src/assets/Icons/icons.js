@@ -10,6 +10,11 @@ import whistle_icon from "./whistle_icon.svg";
 import book_icon from "./book_icon.svg";
 import court_icon from "./court_icon.svg";
 import wallet_icon from "./wallet_icon.svg";
+import chart_icon from "./chart_icon.svg";
+import history_icon from "./history_icon.svg";
+import head_icon from "./head_icon.svg";
+import email_icon from "./email_icon.svg";
+import logout_icon from "./logout_icon.svg";
 
 export const icons = {
   home_icon,
@@ -24,4 +29,9 @@ export const icons = {
   book_icon,
   court_icon,
   wallet_icon,
+  chart_icon,
+  history_icon,
+  head_icon,
+  email_icon,
+  logout_icon,
 };
