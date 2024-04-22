@@ -10,12 +10,13 @@ const Sidebar = () => {
       <div className="header">
         <img src={assets.userImage} alt="User Profile Pic" />
         <div className="namenick">
-          <p className="username">
+          <p className="name">
             <b>Felipe Duque</b>
           </p>
           <p className="username">@felipeduque</p>
         </div>
       </div>
+
       <div className="options">
         <div className="option">
           <SidebarItem Icon={icons.home_icon} MenuOption={"Menu Inicial"} />
@@ -40,31 +41,31 @@ const Sidebar = () => {
 
         <div className="option">
           <p className="title">JOGUE MAIS</p>
-          <SidebarItem Icon={icons.book_icon} MenuOption={"Meus Rankings"} />
-          <SidebarItem Icon={icons.star_icon} MenuOption={"Meus Torneios"} />
-          <SidebarItem Icon={icons.clock_icon} MenuOption={"Meus Torneios"} />
+          <SidebarItem Icon={icons.book_icon} MenuOption={"Minhas Aulas"} />
+          <SidebarItem Icon={icons.star_icon} MenuOption={"Agendar Aula"} />
           <SidebarItem
-            Icon={icons.court_icon}
-            MenuOption={"Encontre Torneios"}
+            Icon={icons.clock_icon}
+            MenuOption={"Agendar Reposição"}
           />
+          <SidebarItem Icon={icons.court_icon} MenuOption={"Alugar Quadra"} />
         </div>
 
         <div className="option">
           <p className="title">DESEMPENHO</p>
-          <SidebarItem Icon={icons.medal_icon} MenuOption={"Meus Rankings"} />
-          <SidebarItem Icon={icons.trophy_icon} MenuOption={"Meus Torneios"} />
           <SidebarItem
-            Icon={icons.whistle_icon}
-            MenuOption={"Encontre Torneios"}
+            Icon={icons.history_icon}
+            MenuOption={"Histórico de Jogos"}
           />
+          <SidebarItem Icon={icons.chart_icon} MenuOption={"Estatísticas"} />
+          <SidebarItem Icon={icons.head_icon} MenuOption={"Head to Head"} />
         </div>
 
         <div className="option">
-          <SidebarItem Icon={icons.home_icon} MenuOption={"Menu Inicial"} />
+          <SidebarItem Icon={icons.email_icon} MenuOption={"Convidar Amigos"} />
         </div>
 
         <div className="option">
-          <SidebarItem Icon={icons.home_icon} MenuOption={"Menu Inicial"} />
+          <SidebarItem Icon={icons.logout_icon} MenuOption={"Sair"} />
         </div>
       </div>
     </div>

@@ -33,6 +33,10 @@
   padding-bottom: 50px;
 }
 
+.username {
+  font-size: 14px;
+}
+
 .namenick {
   display: flex;
   flex-direction: column;
