@@ -1,0 +1,41 @@
+.sidebar {
+  border: var(--secondary-color) 1px solid;
+  flex-direction: row;
+  height: 100vh;
+  width: 300px;
+  padding: 20px;
+  position: fixed;
+  overflow: auto;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 37px;
+}
+.option {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  padding: 0px 16px;
+  font-family: "Poppins";
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+.namenick {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15px;
+}

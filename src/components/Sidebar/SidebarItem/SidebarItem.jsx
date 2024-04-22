@@ -1,11 +1,11 @@
-import React from "react";
 import "./SidebarItem.css";
+
 const SidebarItem = ({ Icon, MenuOption }) => {
   return (
-    <div className="sidebaritem">
-      <img src={Icon} alt="" />
+    <button className="sidebaritem">
+      <img src={Icon} alt="menu icon" />
       <p>{MenuOption}</p>
-    </div>
+    </button>
   );
 };
 
