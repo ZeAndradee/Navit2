@@ -30,3 +30,26 @@ button {
   color: var(--text-color);
   font-size: 16px;
 }
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px; /* Largura da barra de rolagem vertical */
+}
+
+/* Fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+  background: #f6f5f5;
+}
+
+/* Cor da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+}
+
+/* Cor da barra de rolagem ao passar o mouse */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color);
+}
