@@ -3,6 +3,7 @@ import { assets } from "../../assets/assets";
 import SidebarItem from "./SidebarItem/SidebarItem";
 import "./Sidebar.css";
 import { icons } from "../../assets/Icons/icons";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -19,7 +20,9 @@ const Sidebar = () => {
 
       <div className="options">
         <div className="option">
-          <SidebarItem Icon={icons.home_icon} MenuOption={"Menu Inicial"} />
+          <Link to={"/"}>
+            <SidebarItem Icon={icons.home_icon} MenuOption={"Menu Inicial"} />
+          </Link>
           <SidebarItem Icon={icons.pfp_icon} MenuOption={"Meu Perfil"} />
           <SidebarItem
             Icon={icons.notification_icon}
@@ -63,10 +66,11 @@ const Sidebar = () => {
         <div className="option">
           <SidebarItem Icon={icons.email_icon} MenuOption={"Convidar Amigos"} />
         </div>
-
-        <div className="option">
-          <SidebarItem Icon={icons.logout_icon} MenuOption={"Sair"} />
-        </div>
+        <Link to={"/login"}>
+          <div className="option">
+            <SidebarItem Icon={icons.logout_icon} MenuOption={"Sair"} />
+          </div>
+        </Link>
       </div>
     </div>
   );
