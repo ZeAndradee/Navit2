@@ -1,7 +1,12 @@
 import React from "react";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 const LoginPage = () => {
-  return <div>LoginPage</div>;
+  return (
+    <>
+      <Sidebar />
+    </>
+  );
 };
 
 export default LoginPage;
