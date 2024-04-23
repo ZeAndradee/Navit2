@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
 
       // Aqui você pode definir a lógica para selecionar o usuário que você quer atribuir ao contexto
       // Por exemplo, você pode selecionar o primeiro usuário da lista:
-      const user = data[1];
+      const user = data[0];
       //console.log(user.name);
       setUser(user);
     };

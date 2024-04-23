@@ -4,7 +4,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 const LoginPage = () => {
   return (
     <>
-      <Sidebar />
+      <p>Faça login</p>
     </>
   );
 };

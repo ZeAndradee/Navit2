@@ -12,7 +12,7 @@ import { UserProvider } from "./services/Auth.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <PrivateRoute Rota={HomePage} />,
     errorElement: <div>Olá, essa página não foi encontrada.</div>,
   },
 

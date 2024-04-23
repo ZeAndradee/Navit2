@@ -8,10 +8,12 @@ import { UserContext } from "../../services/Auth";
 
 const Sidebar = () => {
   const { user } = useContext(UserContext);
-  let username;
+  let name, username;
   if (user) {
-    username = user.name;
+    name = user.name;
+    username = user.username;
   } else {
+    name = "Carregando...";
     username = "Carregando...";
   }
   return (
@@ -20,7 +22,7 @@ const Sidebar = () => {
         <img src={assets.userImage} alt="User Profile Pic" />
         <div className="namenick">
           <p className="name">
-            <b>{username}</b>
+            <b>{name}</b>
           </p>
           <p className="username">@{username}</p>
         </div>
