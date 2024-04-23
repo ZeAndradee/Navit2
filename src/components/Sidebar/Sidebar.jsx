@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { assets } from "../../assets/assets";
 import SidebarItem from "./SidebarItem/SidebarItem";
 import "./Sidebar.css";
 import { icons } from "../../assets/Icons/icons";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../services/Auth";
 
 const Sidebar = () => {
+  const { user } = useContext(UserContext);
+  const name = user?.name ?? "Carregando...";
+  const username = user?.username ?? "Carregando...";
+
   return (
     <div className="sidebar">
       <div className="header">
         <img src={assets.userImage} alt="User Profile Pic" />
         <div className="namenick">
           <p className="name">
-            <b>Felipe Duque</b>
+            <b>{name}</b>
           </p>
-          <p className="username">@felipeduque</p>
+          <p className="username">@{username}</p>
         </div>
       </div>
 
