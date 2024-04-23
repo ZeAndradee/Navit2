@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+} from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage/SignupPage.jsx";
@@ -13,7 +17,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <PrivateRoute Rota={HomePage} />,
-    errorElement: <div>Olá, essa página não foi encontrada.</div>,
   },
 
   {

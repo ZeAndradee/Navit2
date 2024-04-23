@@ -8,14 +8,9 @@ import { UserContext } from "../../services/Auth";
 
 const Sidebar = () => {
   const { user } = useContext(UserContext);
-  let name, username;
-  if (user) {
-    name = user.name;
-    username = user.username;
-  } else {
-    name = "Carregando...";
-    username = "Carregando...";
-  }
+  const name = user?.name ?? "Carregando...";
+  const username = user?.username ?? "Carregando...";
+
   return (
     <div className="sidebar">
       <div className="header">
