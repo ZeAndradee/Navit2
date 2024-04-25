@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage/SignupPage.jsx";
 import PrivateRoute from "./services/PrivateRoute.jsx";
 import { UserProvider } from "./services/Auth.jsx";
+import { LoginProvider } from "./services/LoginContext.jsx";
 
 //Cria as rotas do site
 const router = createBrowserRouter([
@@ -32,8 +33,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
+    <LoginProvider>
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
+    </LoginProvider>
   </React.StrictMode>
 );

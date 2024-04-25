@@ -10,7 +10,6 @@ const Sidebar = () => {
   const { user } = useContext(UserContext);
   const name = user?.name ?? "Carregando...";
   const username = user?.username ?? "Carregando...";
-
   return (
     <div className="sidebar">
       <div className="header">
