@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import LoginPage from "../pages/LoginPage/LoginPage";
+import { LoginContext } from "./LoginContext";
 
 const PrivateRoute = ({ Rota }) => {
-  const signed = true;
-  if (signed == false) {
+  const { alreadyLogged } = useContext(LoginContext);
+
+  if (alreadyLogged == false) {
     return <LoginPage />;
   } else {
     return <Rota />;

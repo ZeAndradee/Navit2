@@ -4,12 +4,18 @@ import SidebarItem from "./SidebarItem/SidebarItem";
 import "./Sidebar.css";
 import { icons } from "../../assets/Icons/icons";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../services/Auth";
+import { UserContext } from "../../services/UserContext";
+import { LoginContext } from "../../services/LoginContext";
 
 const Sidebar = () => {
   const { user } = useContext(UserContext);
+  const { setAlreadyLogged } = useContext(LoginContext);
+
   const name = user?.name ?? "Carregando...";
   const username = user?.username ?? "Carregando...";
+  const handleLogout = () => {
+    setAlreadyLogged(false);
+  };
 
   return (
     <div className="sidebar">
@@ -71,11 +77,14 @@ const Sidebar = () => {
         <div className="option">
           <SidebarItem Icon={icons.email_icon} MenuOption={"Convidar Amigos"} />
         </div>
-        <Link to={"/login"}>
-          <div className="option">
-            <SidebarItem Icon={icons.logout_icon} MenuOption={"Sair"} />
-          </div>
-        </Link>
+
+        <div className="option">
+          <SidebarItem
+            onClick={handleLogout}
+            Icon={icons.logout_icon}
+            MenuOption={"Sair"}
+          />
+        </div>
       </div>
     </div>
   );

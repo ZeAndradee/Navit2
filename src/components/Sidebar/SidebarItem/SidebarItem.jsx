@@ -1,8 +1,8 @@
 import "./SidebarItem.css";
 
-const SidebarItem = ({ Icon, MenuOption }) => {
+const SidebarItem = ({ onClick, Icon, MenuOption }) => {
   return (
-    <button className="sidebaritem">
+    <button onClick={onClick} className="sidebaritem">
       <img src={Icon} alt="menu icon" />
       <p>{MenuOption}</p>
     </button>
