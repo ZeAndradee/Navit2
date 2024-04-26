@@ -1,19 +1,36 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../services/LoginContext";
-import { redirect } from "react-router-dom";
+import { UserContext } from "../../services/UserContext";
+import fetchUser from "../../services/FetchUser";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [LocalUsername, setLocalUsername] = useState("");
   const [LocalEmail, setLocalEmail] = useState("");
-
-  const { setUsername, setEmail } = useContext(LoginContext);
+  const [LoginError, setLoginError] = useState("");
+  const { setAlreadyLogged } = useContext(LoginContext);
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const handleLogin = () => {
-    setUsername(LocalUsername);
-    setEmail(LocalEmail);
-    navigate("/");
+
+  const handleLogin = async () => {
+    const localUser = await fetchUser(LocalUsername, LocalEmail);
+
+    setUser(localUser);
+
+    if (localUser) {
+      setAlreadyLogged(true);
+      navigate("/");
+    } else {
+      setAlreadyLogged(false);
+      setLoginError("Email ou senha invalidos!");
+    }
   };
+
+  useEffect(() => {
+    if (user) {
+      console.log(user.name);
+    }
+  }, [user]);
 
   return (
     <div>
@@ -32,7 +49,7 @@ const LoginPage = () => {
         onChange={(e) => setLocalEmail(e.target.value)}
       />
       <button onClick={handleLogin}>Entrar</button>
-      <p>{LocalUsername}</p>
+      <p>{LoginError}</p>
     </div>
   );
 };

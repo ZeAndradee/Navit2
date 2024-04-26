@@ -3,11 +3,15 @@ import React, { createContext, useState } from "react";
 export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
-  const [username, setUsername] = useState(null);
-  const [email, setEmail] = useState(null);
+  const [alreadyLogged, setAlreadyLogged] = useState(false);
 
   return (
-    <LoginContext.Provider value={{ username, setUsername, email, setEmail }}>
+    <LoginContext.Provider
+      value={{
+        alreadyLogged,
+        setAlreadyLogged,
+      }}
+    >
       {children}
     </LoginContext.Provider>
   );

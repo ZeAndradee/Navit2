@@ -10,8 +10,8 @@ import HomePage from "./pages/HomePage/HomePage.jsx";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage/SignupPage.jsx";
 import PrivateRoute from "./services/PrivateRoute.jsx";
-import { UserProvider } from "./services/Auth.jsx";
 import { LoginProvider } from "./services/LoginContext.jsx";
+import { UserProvider } from "./services/UserContext.jsx";
 
 //Cria as rotas do site
 const router = createBrowserRouter([
