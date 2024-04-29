@@ -18,6 +18,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <PrivateRoute Rota={HomePage} />,
+    errorElement: <p>Olá, essa página não foi encontrada :(</p>,
   },
 
   {
