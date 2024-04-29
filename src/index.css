@@ -20,6 +20,7 @@
   --primary-color: #5fa2dd;
   --secondary-color: #b9c1cc;
   --text-color: #526581;
+  --text-color2: #3694e7;
   color: #526581;
 }
 
@@ -29,10 +30,15 @@ button {
   font-family: "Inter";
   color: var(--text-color);
   font-size: 16px;
+  cursor: pointer;
 }
 
 a {
   text-decoration: none;
+}
+
+input:focus {
+  outline: none;
 }
 
 ::-webkit-scrollbar {

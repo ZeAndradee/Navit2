@@ -15,6 +15,7 @@ import history_icon from "./history_icon.svg";
 import head_icon from "./head_icon.svg";
 import email_icon from "./email_icon.svg";
 import logout_icon from "./logout_icon.svg";
+import logo_icon from "./logo_icon.svg";
 
 export const icons = {
   home_icon,
@@ -34,4 +35,5 @@ export const icons = {
   head_icon,
   email_icon,
   logout_icon,
+  logo_icon,
 };
