@@ -34,7 +34,9 @@ const Sidebar = () => {
           <Link to={"/"}>
             <SidebarItem Icon={icons.home_icon} MenuOption={"Menu Inicial"} />
           </Link>
-          <SidebarItem Icon={icons.pfp_icon} MenuOption={"Meu Perfil"} />
+          <Link to={"/profile"}>
+            <SidebarItem Icon={icons.pfp_icon} MenuOption={"Meu Perfil"} />
+          </Link>
           <SidebarItem
             Icon={icons.notification_icon}
             MenuOption={"Notificações"}

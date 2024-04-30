@@ -12,6 +12,7 @@ import SignupPage from "./pages/SignupPage/SignupPage.jsx";
 import PrivateRoute from "./services/PrivateRoute.jsx";
 import { LoginProvider } from "./services/LoginContext.jsx";
 import { UserProvider } from "./services/UserContext.jsx";
+import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
 
 //Cria as rotas do site
 const router = createBrowserRouter([
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignupPage />,
+  },
+
+  {
+    path: "/profile",
+    element: <PrivateRoute Rota={ProfilePage} />,
   },
 ]);
 
