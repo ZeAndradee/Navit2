@@ -1,4 +1,4 @@
-import userImage from "./userImage.png";
+import userImage from "./userImage.svg";
 
 export const assets = {
   userImage,

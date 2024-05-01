@@ -14,15 +14,8 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-}
-
 :root {
   font-family: "Inter";
-  display: flex;
   --primary-color: #5fa2dd;
   --secondary-color: #b9c1cc;
   --text-color: #526581;
