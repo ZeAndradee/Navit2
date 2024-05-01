@@ -16,7 +16,9 @@ import head_icon from "./head_icon.svg";
 import email_icon from "./email_icon.svg";
 import logout_icon from "./logout_icon.svg";
 import logo_icon from "./logo_icon.svg";
-
+import more_icon from "./more_icon.svg";
+import heart_icon from "./heart_icon.svg";
+import comment_icon from "./comment_icon.svg";
 export const icons = {
   home_icon,
   pfp_icon,
@@ -36,4 +38,7 @@ export const icons = {
   email_icon,
   logout_icon,
   logo_icon,
+  more_icon,
+  heart_icon,
+  comment_icon,
 };
