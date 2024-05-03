@@ -67,3 +67,8 @@
   align-items: center;
   gap: 7px;
 }
+@media (max-width: 400px) {
+  .postContent {
+    flex-direction: column;
+  }
+}

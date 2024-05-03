@@ -134,3 +134,77 @@
   margin-top: 50px;
   gap: 30px;
 }
+
+@media (max-width: 775px) {
+  .topheader {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .leftdata {
+    flex-wrap: wrap;
+  }
+
+  .userimage img {
+    width: 15vw;
+  }
+
+  .btn {
+    height: fit-content;
+  }
+
+  .userinfo {
+    margin: 0;
+    flex-wrap: wrap;
+  }
+
+  .userbio {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .userbio button {
+    height: fit-content;
+  }
+}
+
+@media (max-width: 500px) {
+  .profile-info {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .leftdata {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .topheader {
+    gap: 10px;
+  }
+
+  .userdata {
+    margin: 0;
+    padding: 15px;
+  }
+  .userimage {
+    padding: 0 15px;
+  }
+  .userinfo {
+    justify-content: center;
+  }
+  .btn,
+  .btn button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .userinfo {
+    flex-direction: column;
+    gap: 7px;
+  }
+  .data {
+    flex-direction: row;
+    gap: 5px;
+  }
+}

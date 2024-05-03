@@ -33,15 +33,21 @@ const ProfilePage = () => {
                 </div>
                 <div className="userinfo">
                   <div className="data">
-                    <span>37</span>
+                    <span>
+                      <b>37</b>
+                    </span>
                     <span>posts</span>
                   </div>
                   <div className="data">
-                    <span>18</span>
+                    <span>
+                      <b>18</b>
+                    </span>
                     <span>torneios</span>
                   </div>
                   <div className="data">
-                    <span>273</span>
+                    <span>
+                      <b>273</b>
+                    </span>
                     <span>partidas</span>
                   </div>
                 </div>

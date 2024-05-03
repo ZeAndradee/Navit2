@@ -33,9 +33,7 @@
 
 .header img {
   width: 53px;
-}
-.header :hover {
-  background-color: rgba(128, 128, 128, 0.114);
+  cursor: pointer;
 }
 
 .username {

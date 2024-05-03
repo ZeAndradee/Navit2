@@ -30,6 +30,11 @@ button {
   color: var(--text-color);
   font-size: 16px;
   cursor: pointer;
+  text-wrap: nowrap;
+}
+
+p {
+  text-wrap: nowrap;
 }
 
 a {
