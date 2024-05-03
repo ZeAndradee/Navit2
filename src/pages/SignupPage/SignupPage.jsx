@@ -135,7 +135,7 @@ const LoginPage = () => {
                 </Link>
               </div>
             </div>
-            <button className="login-btn">Faça Login</button>
+            <button className="login-btn">Cadastre-se</button>
           </div>
         </div>
       </div>

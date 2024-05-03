@@ -5,12 +5,12 @@
   width: 100vw;
 }
 
-.left-side {
+.leftside {
   display: flex;
   height: 100vh;
   width: 50vw;
 }
-.left-side img {
+.leftside img {
   display: flex;
   width: 100%;
   height: 100%;
@@ -18,15 +18,21 @@
   object-position: 20% 50%;
 }
 
-.right-side {
+.rightside {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 50vw;
 }
+.logincontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
-.login-form {
+.loginform {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,22 +43,22 @@
   gap: 40px;
 }
 
-.login-form img {
+.loginform img {
   width: 350px;
 }
 
-.add-login-option {
+.addloginoption {
   display: flex;
   align-items: center;
   flex-direction: row;
   height: max-content;
   gap: 23px;
 }
-.add-login-option svg {
+.addloginoption svg {
   width: 25px;
 }
 
-.google-button {
+.googlebutton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,12 +68,13 @@
   color: var(--text-color2);
   font-weight: 500;
 }
-.google-button svg {
+.googlebutton svg {
   margin-right: 10px;
 }
 
-.login-icons {
+.loginicons {
   display: flex;
+  height: 55.6px;
   align-items: center;
   justify-content: center;
   padding: 15px;
@@ -75,7 +82,7 @@
   border-radius: 5px;
 }
 
-.login-icons svg {
+.loginicons svg {
   height: 100%;
 }
 
@@ -109,7 +116,7 @@
   border-radius: 5px;
 }
 
-.extra-quest {
+.extraquest {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -117,7 +124,7 @@
   font-size: 14px;
 }
 
-.left-quest {
+.leftquest {
   display: flex;
   flex-direction: row;
   gap: 6px;
@@ -128,11 +135,11 @@
   color: var(--text-color2);
 }
 
-.right-quest p {
+.rightquest p {
   color: var(--text-color);
 }
 
-.login-btn {
+.loginbtn {
   background-color: var(--text-color2);
   color: white;
   font-weight: 600;
@@ -141,21 +148,43 @@
   margin-top: 45px;
 }
 
-.error-msg {
+.errormsg {
   margin-top: 10px;
   color: #ff253f;
 }
 
-@media (max-width: 1020px) {
-  .login {
-    align-items: center;
-    justify-content: center;
-  }
-  .right-side {
-    width: 100%;
+@media (max-width: 1100px) {
+  .leftside {
+    display: none;
   }
 
-  .left-side {
+  .login {
+    justify-content: center;
+  }
+
+  .loginform img {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .googlebutton {
+    padding: 15px;
+    height: 55.6px;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+  }
+
+  .googlebutton span {
     display: none;
+  }
+
+  .googlebutton svg {
+    margin: 0;
+    height: fit-content;
+  }
+
+  .extraquest {
+    flex-direction: column;
+    gap: 5px;
   }
 }
