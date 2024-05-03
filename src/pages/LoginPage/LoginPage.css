@@ -146,7 +146,7 @@
   color: #ff253f;
 }
 
-@media (max-width: 1090px) {
+@media (max-width: 1020px) {
   .login {
     align-items: center;
     justify-content: center;

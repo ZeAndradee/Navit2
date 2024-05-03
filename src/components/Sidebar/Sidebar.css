@@ -1,11 +1,9 @@
 .sidebar {
   border: var(--secondary-color) 1px solid;
-  flex-direction: row;
-  height: 100vh;
-  width: 320px;
+  width: 270px;
   padding: 20px;
-  position: fixed;
   overflow: auto;
+  text-wrap: nowrap;
 }
 
 .options {
@@ -33,6 +31,11 @@
   padding-bottom: 50px;
 }
 
+.header img {
+  width: 53px;
+  cursor: pointer;
+}
+
 .username {
   font-size: 14px;
 }
@@ -42,4 +45,39 @@
   flex-direction: column;
   justify-content: center;
   margin-left: 15px;
+}
+
+@media (max-width: 1040px) {
+  .sidebar {
+    flex-direction: column;
+    width: fit-content;
+    padding: 10px;
+  }
+  .header {
+    justify-content: center;
+  }
+
+  .namenick {
+    display: none;
+  }
+
+  .sidebaritem {
+    justify-content: center;
+  }
+
+  .sidebaritem img {
+    margin: 0;
+  }
+
+  .sidebaritem p {
+    display: none;
+  }
+
+  .header p {
+    display: none;
+  }
+
+  .option p {
+    display: none;
+  }
 }
