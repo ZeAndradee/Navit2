@@ -1,0 +1,69 @@
+.createPost {
+  display: flex;
+  flex-direction: column;
+  border: var(--secondary-color) 1px solid;
+  padding: 8px 16px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.imgContent {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 15px;
+}
+
+.imgContent img {
+  height: 45px;
+}
+.postContent {
+  display: flex;
+  width: 100%;
+}
+
+.postContent textarea {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 400;
+  padding-top: 15px;
+  resize: none;
+}
+
+.bottomBtn {
+  display: flex;
+  padding-top: 7px;
+  justify-content: space-between;
+}
+
+.extraBtn {
+  display: flex;
+  gap: 14px;
+}
+
+.extraBtn button {
+  display: flex;
+  padding: 2px;
+}
+
+.extraBtn button:hover {
+  background-color: rgba(128, 128, 128, 0.114);
+  border-radius: 5px;
+}
+
+.sendBtn {
+  display: flex;
+  background-color: var(--text-color2);
+  padding: 7px 10px;
+  border-radius: 5px;
+}
+
+.sendBtn button {
+  color: white;
+}
+
+@media (max-width: 400px) {
+  .extraBtn {
+    gap: 3%;
+  }
+}

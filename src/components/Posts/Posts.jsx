@@ -15,11 +15,11 @@ const posts = ({
     <div className="post-card">
       <div className="header-info">
         <div className="img-name">
-          <img src={userImage} alt="userImage" srcset="" />
+          <img src={userImage} alt="userImage" srcSet="" />
           <p>{username}</p>
         </div>
         <div className="more">
-          <img src={icons.more_icon} alt="more_icon" srcset="" />
+          <img src={icons.more_icon} alt="more_icon" srcSet="" />
         </div>
       </div>
       <div className="content">
