@@ -41,6 +41,23 @@ a {
   text-decoration: none;
 }
 
+input {
+  border: none;
+  font-family: "Inter";
+}
+
+textarea {
+  border: none;
+  font-family: "Inter";
+}
+
+textarea::-webkit-scrollbar {
+  width: 0;
+}
+
+textarea:focus {
+  outline: none;
+}
 input:focus {
   outline: none;
 }
