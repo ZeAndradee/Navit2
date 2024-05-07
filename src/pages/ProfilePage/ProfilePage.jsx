@@ -3,13 +3,14 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import Posts from "../../components/Posts/Posts";
 import "./ProfilePage.css";
 import { assets } from "../../assets/assets";
-import { UserContext, UserProvider } from "../../services/UserContext";
+import { UserContext } from "../../services/UserContext";
 import { icons } from "../../assets/Icons/icons";
 
 const ProfilePage = () => {
   const { user } = useContext(UserContext);
   const name = user?.name ?? "username";
   const username = user?.username ?? "username";
+  const userImage = user?.userimage ?? "Carregando...";
 
   return (
     <div className="profile-page">
@@ -20,7 +21,7 @@ const ProfilePage = () => {
         <div className="profile">
           <div className="profile-info">
             <div className="userimage">
-              <img src={assets.userImage} alt="" />
+              <img src={userImage} alt="" />
             </div>
             <div className="userdata">
               <div className="topheader">
@@ -74,7 +75,7 @@ const ProfilePage = () => {
           </div>
           <div className="posts">
             <Posts
-              userImage={assets.userImage}
+              userImage={userImage}
               username={name}
               postImage={assets.image1}
               postContent={"Mais uma partida com o gigante!"}
@@ -82,7 +83,7 @@ const ProfilePage = () => {
               comments={2}
             />
             <Posts
-              userImage={assets.userImage}
+              userImage={userImage}
               username={name}
               postImage={assets.image1}
               postContent={"Mais uma partida com o gigante!"}

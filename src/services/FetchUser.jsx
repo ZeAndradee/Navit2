@@ -1,13 +1,19 @@
-import { useContext } from "react";
-import { LoginContext } from "./LoginContext";
-import { UserContext } from "./UserContext";
-
-const fetchUser = async (username, email) => {
+const fetchUser = async (username, password) => {
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/users/?username=${username}&email=${email}`
+    `http://localhost:3000/users`
+    // `https://jsonplaceholder.typicode.com/users/?username=${username}&email=${email}`
   );
   const users = await response.json();
-  const user = users[0];
+
+  const user = users.find(
+    (user) => user.username === username && user.password === password
+  );
+
+  if (!user) {
+    console.log("O usuario não foi encontrado :(");
+    return null;
+  }
+
   return user;
 };
 

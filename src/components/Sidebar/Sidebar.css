@@ -33,7 +33,10 @@
 
 .header img {
   width: 53px;
+  height: 53px;
+  object-fit: cover;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .username {
