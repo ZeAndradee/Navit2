@@ -31,6 +31,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   text-wrap: nowrap;
+  -webkit-tap-highlight-color: none;
 }
 
 p {

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Posts.css";
 import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
+import { UserContext } from "../../services/UserContext";
 
 const posts = ({
   userImage,
@@ -11,6 +12,12 @@ const posts = ({
   likes,
   comments,
 }) => {
+  const [like, setLike] = useState(false);
+
+  const handleLike = () => {
+    setLike(!like);
+    console.log(like);
+  };
   return (
     <div className="post-card">
       <div className="header-info">
@@ -29,7 +36,7 @@ const posts = ({
         <div className="postInfo">
           <div className="likesComments">
             <div className="info">
-              <button>
+              <button onClick={handleLike}>
                 <img src={icons.heart_icon} alt="heart_icon" />
               </button>
               <span>{likes}</span>

@@ -9,18 +9,17 @@ import styles from "./LoginPage.module.css";
 
 const LoginPage = () => {
   const [LocalUsername, setLocalUsername] = useState("");
-  const [LocalEmail, setLocalEmail] = useState("");
+  const [LocalPassword, setLocalPassword] = useState("");
   const [LoginError, setLoginError] = useState("");
   const { setAlreadyLogged } = useContext(LoginContext);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const localUser = await fetchUser(LocalUsername, LocalEmail);
-
-    setUser(localUser);
+    const localUser = await fetchUser(LocalUsername, LocalPassword);
 
     if (localUser) {
+      setUser(localUser);
       setAlreadyLogged(true);
       navigate("/");
     } else {
@@ -144,8 +143,8 @@ const LoginPage = () => {
                     id="password"
                     type="password"
                     placeholder="Senha"
-                    value={LocalEmail}
-                    onChange={(e) => setLocalEmail(e.target.value)}
+                    value={LocalPassword}
+                    onChange={(e) => setLocalPassword(e.target.value)}
                   />
                 </div>
               </div>

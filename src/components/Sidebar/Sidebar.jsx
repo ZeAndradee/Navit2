@@ -13,6 +13,7 @@ const Sidebar = () => {
 
   const name = user?.name ?? "Carregando...";
   const username = user?.username ?? "Carregando...";
+  const userImage = user?.userimage ?? "Carregando...";
   const handleLogout = () => {
     setAlreadyLogged(false);
   };
@@ -20,7 +21,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="header">
-        <img src={assets.userImage} alt="User Profile Pic" />
+        <img src={userImage} alt="User Profile Pic" />
         <div className="namenick">
           <p className="name">
             <b>{name}</b>
