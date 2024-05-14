@@ -38,6 +38,8 @@
 
 .userimage img {
   width: 110px;
+  height: 110px;
+  object-fit: cover;
   border-radius: 50%;
 }
 
@@ -146,6 +148,7 @@
   }
 
   .userimage img {
+    height: auto;
     width: 15vw;
   }
 

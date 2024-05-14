@@ -1,6 +1,7 @@
 const fetchUser = async (username, password) => {
   const response = await fetch(
-    `http://localhost:3000/users`
+    `https://tennisly-api-1.onrender.com/users`
+    // `http://localhost:3000/`
     // `https://jsonplaceholder.typicode.com/users/?username=${username}&email=${email}`
   );
   const users = await response.json();
