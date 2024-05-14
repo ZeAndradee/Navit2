@@ -16,9 +16,17 @@ const Feed = ({ user }) => {
           userImage={userImage}
           username={username}
           postImage={assets.image1}
-          postContent={"Peguei na bola do thomas!"}
-          likes={861}
-          comments={15}
+          postContent={"Que jogada!"}
+          likes={12}
+          comments={2}
+        />
+        <Posts
+          userImage={userImage}
+          username={username}
+          postImage={assets.image1}
+          postContent={"Mais uma vitória 🏆"}
+          likes={34}
+          comments={5}
         />
       </div>
     </div>
