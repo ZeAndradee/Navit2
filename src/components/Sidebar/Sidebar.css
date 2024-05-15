@@ -1,6 +1,8 @@
 .sidebar {
-  border: var(--secondary-color) 1px solid;
-  width: 280px;
+  display: flex;
+  flex-direction: column;
+  border-right: var(--secondary-color) 1px solid;
+  width: 260px;
   padding: 20px;
   overflow: auto;
   text-wrap: nowrap;

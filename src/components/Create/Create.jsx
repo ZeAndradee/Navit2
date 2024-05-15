@@ -9,7 +9,7 @@ const Create = () => {
   const userImage = user?.userimage ?? "Carregando...";
   useEffect(() => {
     const textarea = document.querySelector("textarea");
-    textarea.addEventListener("keyup", (e) => {
+    textarea.addEventListener("keydown", (e) => {
       textarea.style.height = "auto";
       let taHeight = e.target.scrollHeight;
       textarea.style.height = `${taHeight}px`;

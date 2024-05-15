@@ -11,7 +11,9 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      <Sidebar />
+      <div className="sidebar-container">
+        <Sidebar />
+      </div>
       <div className="feed">
         <Feed user={user} />
       </div>

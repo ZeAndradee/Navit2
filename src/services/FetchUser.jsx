@@ -6,7 +6,9 @@ const fetchUser = async (username, password) => {
   const users = await response.json();
 
   const user = users.find(
-    (user) => user.username === username && user.password === password
+    (user) =>
+      (user.username === username && user.password === password) ||
+      (user.email === username && user.password === password)
   );
 
   if (!user) {

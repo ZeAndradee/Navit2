@@ -14,7 +14,15 @@ const LoginPage = () => {
   const { setAlreadyLogged } = useContext(LoginContext);
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const [typed, setTyped] = useState(false);
 
+  useEffect(() => {
+    if ((LocalUsername !== "") & (LocalPassword !== "")) {
+      setTyped(true);
+    } else {
+      setTyped(false);
+    }
+  }, [LocalUsername, LocalPassword]);
   const handleLogin = async () => {
     const localUser = await fetchUser(LocalUsername, LocalPassword);
 
@@ -162,8 +170,14 @@ const LoginPage = () => {
                 </div>
               </div>
               <p className={styles.errormsg}>{LoginError}</p>
-              <button className={styles.loginbtn} onClick={handleLogin}>
-                Faça Login
+              <button
+                className={styles.loginbtn}
+                onClick={typed ? handleLogin : null}
+                style={{
+                  backgroundColor: typed ? "#3694e7" : "#526581",
+                }}
+              >
+                Login
               </button>
             </div>
           </div>

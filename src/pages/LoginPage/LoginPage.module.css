@@ -140,7 +140,7 @@
 }
 
 .loginbtn {
-  background-color: var(--text-color2);
+  /* background-color: var(--text-color2); */
   color: white;
   font-weight: 600;
   padding: 12px;

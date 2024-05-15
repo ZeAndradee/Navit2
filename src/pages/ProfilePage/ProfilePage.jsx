@@ -11,10 +11,11 @@ const ProfilePage = () => {
   const name = user?.name ?? "username";
   const username = user?.username ?? "username";
   const userImage = user?.userimage ?? "Carregando...";
+  const userBio = user?.userbio ?? "Carregando...";
 
   return (
     <div className="profile-page">
-      <div className="sidebar-container">
+      <div className="sidebar-container2">
         <Sidebar />
       </div>
       <div className="profile-container">
@@ -59,10 +60,7 @@ const ProfilePage = () => {
                   <span>3 vitórias em torneios</span>
                 </div>
                 <div className="userbio">
-                  <span>
-                    Apaixonado pelo tênis <br /> Tricampeão estadual
-                    pernambucano 🏆
-                  </span>
+                  <span>{userBio}</span>
                   <div className="btn">
                     <button className="btnestatisticas">
                       <img src={icons.chart_icon} alt="" />
