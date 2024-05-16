@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { icons } from "../../assets/Icons/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignupPage.css";
 import AddUser from "../../services/AddUser";
 
@@ -10,7 +10,7 @@ const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errMessage, setErrMessage] = useState(null);
-
+  const navigate = useNavigate();
   const addUser = async () => {
     const resAddUser = await AddUser(username, email, password, name, "", "");
 
