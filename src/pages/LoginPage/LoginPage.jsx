@@ -172,7 +172,9 @@ const LoginPage = () => {
               <p className={styles.errormsg}>{LoginError}</p>
               <button
                 className={styles.loginbtn}
-                onClick={typed ? handleLogin : null}
+                onClick={() => {
+                  if (typed) handleLogin();
+                }}
                 style={{
                   backgroundColor: typed ? "#3694e7" : "#526581",
                 }}

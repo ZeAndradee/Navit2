@@ -1,8 +1,5 @@
 const fetchUser = async (username, password) => {
-  const response = await fetch(
-    `https://tennisly-api-1.onrender.com/users`
-    // `http://localhost:3000/`
-  );
+  const response = await fetch(`https://tennisly-api-1.onrender.com/users`);
   const users = await response.json();
 
   const user = users.find(

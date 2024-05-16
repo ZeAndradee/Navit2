@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { icons } from "../../assets/Icons/icons";
 import { Link } from "react-router-dom";
 import "./SignupPage.css";
+import AddUser from "../../services/AddUser";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMessage, setErrMessage] = useState(null);
+
+  const addUser = async () => {
+    const resAddUser = await AddUser(username, email, password, name, "", "");
+
+    console.log(resAddUser);
+    if (resAddUser) {
+      navigate("/login");
+    } else {
+      setErrMessage(resAddUser);
+    }
+  };
+
   return (
     <div className="login">
       <div className="left-side">
@@ -101,18 +119,22 @@ const LoginPage = () => {
           <div className="form">
             <div className="questions">
               <div className="inputs">
-                <label htmlFor="userEmail">
-                  Insira seu número de celular ou e-mail
-                </label>
+                <label htmlFor="userEmail">Insira seu e-mail</label>
                 <input
                   id="userEmail"
                   type="text"
-                  placeholder="Celular ou email"
+                  placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="inputs">
-                <label htmlFor="name">Insira seu nome completo</label>
-                <input id="name" type="name" placeholder="Nome completo" />
+                <label htmlFor="name">Insira seu nome</label>
+                <input
+                  id="name"
+                  type="name"
+                  placeholder="Nome"
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
               <div className="inputs">
                 <label htmlFor="username">Insira seu nome de usuário</label>
@@ -120,11 +142,17 @@ const LoginPage = () => {
                   id="username"
                   type="text"
                   placeholder="Nome de Usuário"
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="inputs">
                 <label htmlFor="password">Insira sua senha</label>
-                <input id="password" type="password" placeholder="Senha" />
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Senha"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
             </div>
             <div className="extra-quest">
@@ -135,7 +163,12 @@ const LoginPage = () => {
                 </Link>
               </div>
             </div>
-            <button className="login-btn">Cadastre-se</button>
+            <div className="errorMessage">
+              <span>{errMessage}</span>
+            </div>
+            <button className="login-btn" onClick={addUser}>
+              Cadastre-se
+            </button>
           </div>
         </div>
       </div>
