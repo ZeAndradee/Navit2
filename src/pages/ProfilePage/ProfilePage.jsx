@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Posts from "../../components/Posts/Posts";
 import "./ProfilePage.css";
@@ -8,10 +8,18 @@ import { icons } from "../../assets/Icons/icons";
 
 const ProfilePage = () => {
   const { user } = useContext(UserContext);
+  const [userimage, setUserImage] = useState("");
   const name = user?.name ?? "username";
   const username = user?.username ?? "username";
-  const userImage = user?.userimage ?? "Carregando...";
   const userBio = user?.userbio ?? "Carregando...";
+
+  useEffect(() => {
+    if (user?.userimage) {
+      setUserImage(user?.userimage);
+    } else {
+      setUserImage(assets.userDefault);
+    }
+  }, [user]);
 
   return (
     <div className="profile-page">
@@ -22,7 +30,7 @@ const ProfilePage = () => {
         <div className="profile">
           <div className="profile-info">
             <div className="userimage">
-              <img src={userImage} alt="" />
+              <img src={userimage} alt="" />
             </div>
             <div className="userdata">
               <div className="topheader">
@@ -73,7 +81,7 @@ const ProfilePage = () => {
           </div>
           <div className="posts">
             <Posts
-              userImage={userImage}
+              userImage={userimage}
               username={name}
               postImage={assets.image1}
               postContent={"Mais uma partida com o gigante!"}
@@ -81,7 +89,7 @@ const ProfilePage = () => {
               comments={2}
             />
             <Posts
-              userImage={userImage}
+              userImage={userimage}
               username={name}
               postImage={assets.image1}
               postContent={"Mais uma partida com o gigante!"}

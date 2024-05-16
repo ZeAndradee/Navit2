@@ -11,10 +11,9 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [errMessage, setErrMessage] = useState(null);
   const navigate = useNavigate();
+
   const addUser = async () => {
     const resAddUser = await AddUser(username, email, password, name, "", "");
-
-    console.log(resAddUser);
     if (resAddUser) {
       navigate("/login");
     } else {

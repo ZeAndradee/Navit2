@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import style from "./Create.module.css";
 import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
-import { useEffect } from "react";
 import { UserContext } from "../../services/UserContext";
 const Create = () => {
   const { user } = useContext(UserContext);
-  const userImage = user?.userimage ?? "Carregando...";
   useEffect(() => {
     const textarea = document.querySelector("textarea");
     textarea.addEventListener("keydown", (e) => {
@@ -15,11 +13,20 @@ const Create = () => {
       textarea.style.height = `${taHeight}px`;
     });
   }, []);
+
+  const [userimage, setUserImage] = useState("");
+  useEffect(() => {
+    if (user?.userimage) {
+      setUserImage(user?.userimage);
+    } else {
+      setUserImage(assets.userDefault);
+    }
+  }, [user]);
   return (
     <div className={style.createPost}>
       <div className={style.imgContent}>
         <div className={style.userImage}>
-          <img src={userImage} alt="userImage" />
+          <img src={userimage} alt="userImage" />
         </div>
         <div className={style.postContent}>
           <textarea type="text" placeholder="O que está acontecendo?" />

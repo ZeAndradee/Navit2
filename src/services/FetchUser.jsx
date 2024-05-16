@@ -1,6 +1,8 @@
+import axios from "axios";
+
 const fetchUser = async (username, password) => {
-  const response = await fetch(`https://tennisly-api-1.onrender.com/users`);
-  const users = await response.json();
+  const response = await axios.get(`https://tennisly-api-1.onrender.com/users`);
+  const users = response.data;
 
   const user = users.find(
     (user) =>

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useState } from "react";
 
 const AddUser = async (username, email, password, name, userimage, userbio) => {
   try {

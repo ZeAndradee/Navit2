@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Create from "../Create/Create";
 import Posts from "../Posts/Posts";
 import style from "./Feed.module.css";
 import { assets } from "../../assets/assets";
 const Feed = ({ user }) => {
   const username = user?.name ?? "username";
-  const userImage = user?.userimage ?? "Carregando...";
+
+  const [userimage, setUserImage] = useState("");
+  useEffect(() => {
+    if (user?.userimage) {
+      setUserImage(user?.userimage);
+    } else {
+      setUserImage(assets.userDefault);
+    }
+  }, [user]);
   return (
     <div className={style.feed}>
       <div className={style.create}>
@@ -13,7 +21,7 @@ const Feed = ({ user }) => {
       </div>
       <div className={style.posts}>
         <Posts
-          userImage={userImage}
+          userImage={userimage}
           username={username}
           postImage={assets.image1}
           postContent={"Que jogada!"}
@@ -21,7 +29,7 @@ const Feed = ({ user }) => {
           comments={2}
         />
         <Posts
-          userImage={userImage}
+          userImage={userimage}
           username={username}
           postImage={assets.image1}
           postContent={"Mais uma sortida 🏆"}
@@ -29,7 +37,7 @@ const Feed = ({ user }) => {
           comments={5}
         />
         <Posts
-          userImage={userImage}
+          userImage={userimage}
           username={username}
           postImage={assets.image1}
           postContent={"Mais uma vitória 🏆"}
@@ -37,7 +45,7 @@ const Feed = ({ user }) => {
           comments={5}
         />
         <Posts
-          userImage={userImage}
+          userImage={userimage}
           username={username}
           postImage={assets.image1}
           postContent={"Mais uma vitória 🏆"}
