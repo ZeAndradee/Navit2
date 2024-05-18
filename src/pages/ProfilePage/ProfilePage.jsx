@@ -5,6 +5,7 @@ import "./ProfilePage.css";
 import { assets } from "../../assets/assets";
 import { UserContext } from "../../services/UserContext";
 import { icons } from "../../assets/Icons/icons";
+import Feed from "../../components/Feed/Feed";
 
 const ProfilePage = () => {
   const { user } = useContext(UserContext);
@@ -26,6 +27,9 @@ const ProfilePage = () => {
       <div className="sidebar-container2">
         <Sidebar />
       </div>
+      {/* <div className="feed">
+        <Feed user={user} />
+      </div> */}
       <div className="profile-container">
         <div className="profile">
           <div className="profile-info">
