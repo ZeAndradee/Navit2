@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { icons } from "../../assets/Icons/icons";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignupPage.css";
@@ -12,17 +12,23 @@ const LoginPage = () => {
   const [errMessage, setErrMessage] = useState(null);
   const [errCode, setErrCode] = useState(null);
   const navigate = useNavigate();
+  const [typed, setTyped] = useState(false);
 
+  useEffect(() => {
+    if (email !== "" && name !== "" && username !== "" && password !== "") {
+      setTyped(true);
+    } else {
+      setTyped(false);
+    }
+  }, [email, name, username, password]);
   const addUser = async () => {
     const resAddUser = await AddUser(username, email, password, name, "", "");
-    if (resAddUser.result) {
+    if (resAddUser.code === 1) {
       navigate("/login");
-    }
-    if (resAddUser.code === -1) {
+    } else if (resAddUser.code === -1) {
       setErrMessage(resAddUser.message);
       setErrCode(-1);
-    }
-    if (resAddUser.code === -2) {
+    } else if (resAddUser.code === -2) {
       setErrMessage(resAddUser.message);
       setErrCode(-2);
     }
@@ -188,7 +194,13 @@ const LoginPage = () => {
               </div>
             </div>
             <p className="errormsg">{errMessage}</p>
-            <button className="login-btn" onClick={addUser}>
+            <button
+              className="login-btn"
+              onClick={() => {
+                if (typed) addUser();
+              }}
+              style={{ backgroundColor: typed ? "#3694e7" : "#526581" }}
+            >
               Cadastre-se
             </button>
           </div>
