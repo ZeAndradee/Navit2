@@ -10,14 +10,21 @@ const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errMessage, setErrMessage] = useState(null);
+  const [errCode, setErrCode] = useState(null);
   const navigate = useNavigate();
 
   const addUser = async () => {
     const resAddUser = await AddUser(username, email, password, name, "", "");
-    if (resAddUser) {
+    if (resAddUser.result) {
       navigate("/login");
-    } else {
-      setErrMessage(resAddUser);
+    }
+    if (resAddUser.code === -1) {
+      setErrMessage(resAddUser.message);
+      setErrCode(-1);
+    }
+    if (resAddUser.code === -2) {
+      setErrMessage(resAddUser.message);
+      setErrCode(-2);
     }
   };
 
@@ -124,6 +131,12 @@ const LoginPage = () => {
                   type="text"
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
+                  style={{
+                    border:
+                      errCode === -2
+                        ? "1.4px solid red"
+                        : "1.4px solid var(--secondary-color)",
+                  }}
                 />
               </div>
               <div className="inputs">
@@ -133,6 +146,12 @@ const LoginPage = () => {
                   type="name"
                   placeholder="Nome"
                   onChange={(e) => setName(e.target.value)}
+                  style={{
+                    border:
+                      errCode === -3
+                        ? "1.4px solid red"
+                        : "1.4px solid var(--secondary-color)",
+                  }}
                 />
               </div>
               <div className="inputs">
@@ -142,6 +161,12 @@ const LoginPage = () => {
                   type="text"
                   placeholder="Nome de Usuário"
                   onChange={(e) => setUsername(e.target.value)}
+                  style={{
+                    border:
+                      errCode === -1
+                        ? "1.4px solid red"
+                        : "1.4px solid var(--secondary-color)",
+                  }}
                 />
               </div>
               <div className="inputs">
@@ -162,9 +187,7 @@ const LoginPage = () => {
                 </Link>
               </div>
             </div>
-            <div className="errorMessage">
-              <span>{errMessage}</span>
-            </div>
+            <p className="errormsg">{errMessage}</p>
             <button className="login-btn" onClick={addUser}>
               Cadastre-se
             </button>

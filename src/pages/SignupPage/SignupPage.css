@@ -137,6 +137,12 @@
   margin-top: 45px;
 }
 
+.errormsg {
+  margin-top: 10px;
+  color: #ff253f;
+  text-wrap: wrap;
+}
+
 @media (max-width: 1100px) {
   .left-side {
     display: none;
