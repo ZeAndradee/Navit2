@@ -5,7 +5,7 @@ import "./ProfilePage.css";
 import { assets } from "../../assets/assets";
 import { UserContext } from "../../services/UserContext";
 import { icons } from "../../assets/Icons/icons";
-import Feed from "../../components/Feed/Feed";
+import UserPosts from "../../services/UserPosts";
 
 const ProfilePage = () => {
   const { user } = useContext(UserContext);
@@ -13,6 +13,8 @@ const ProfilePage = () => {
   const name = user?.name ?? "username";
   const username = user?.username ?? "username";
   const userBio = user?.userbio ?? "Carregando...";
+  const [errMessage, setErrMessage] = useState(null);
+  const [posts, setPosts] = useState(null);
 
   useEffect(() => {
     if (user?.userimage) {
@@ -22,14 +24,24 @@ const ProfilePage = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const userPosts = await UserPosts(user?.id?.toString());
+      if (userPosts.result) {
+        setPosts(userPosts.content);
+      } else {
+        setErrMessage(userPosts.message);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
   return (
     <div className="profile-page">
       <div className="sidebar-container2">
         <Sidebar />
       </div>
-      {/* <div className="feed">
-        <Feed user={user} />
-      </div> */}
       <div className="profile-container">
         <div className="profile">
           <div className="profile-info">
@@ -84,22 +96,19 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className="posts">
-            <Posts
-              userImage={userimage}
-              username={name}
-              postImage={assets.image1}
-              postContent={"Mais uma partida com o gigante!"}
-              likes={14}
-              comments={2}
-            />
-            <Posts
-              userImage={userimage}
-              username={name}
-              postImage={assets.image1}
-              postContent={"Mais uma partida com o gigante!"}
-              likes={14}
-              comments={2}
-            />
+            {posts &&
+              [...posts]
+                .reverse()
+                .map((post, index) => (
+                  <Posts
+                    userImage={userimage}
+                    username={name}
+                    postImage={post.postimage}
+                    postContent={post.postcontent}
+                    likes={post.likes}
+                    comments={2}
+                  />
+                ))}
           </div>
         </div>
       </div>

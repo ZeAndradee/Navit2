@@ -13,7 +13,6 @@ const posts = ({
   comments,
 }) => {
   const [like, setLike] = useState(false);
-
   const handleLike = () => {
     setLike(!like);
     console.log(like);

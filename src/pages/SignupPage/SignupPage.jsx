@@ -21,6 +21,7 @@ const LoginPage = () => {
       setTyped(false);
     }
   }, [email, name, username, password]);
+
   const addUser = async () => {
     const resAddUser = await AddUser(username, email, password, name, "", "");
     if (resAddUser.code === 1) {

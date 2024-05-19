@@ -1,9 +1,9 @@
 .post-card {
   display: flex;
   flex-direction: column;
-  width: 100%;
   border: var(--secondary-color) 1px solid;
   border-radius: 5px;
+  width: 100%;
   padding: 5px 0px;
 }
 
@@ -57,9 +57,17 @@
   font-weight: 500;
 }
 
+.imageContent {
+  display: flex;
+  padding: 5px 10px;
+}
+
 .imageContent img {
   display: flex;
   width: 100%;
+  max-height: 416px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 .likesComments {
