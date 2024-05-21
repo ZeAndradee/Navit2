@@ -28,7 +28,7 @@ button {
   border: none;
   font-family: "Inter";
   color: var(--text-color);
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   text-wrap: nowrap;
   -webkit-tap-highlight-color: transparent;
@@ -36,6 +36,11 @@ button {
 
 p {
   text-wrap: nowrap;
+  font-size: 15px;
+}
+
+span {
+  font-size: 15px;
 }
 
 a {
@@ -45,6 +50,10 @@ a {
 input {
   border: none;
   font-family: "Inter";
+}
+
+label {
+  font-size: 15px;
 }
 
 textarea {

@@ -23,6 +23,7 @@ const LoginPage = () => {
       setTyped(false);
     }
   }, [LocalUsername, LocalPassword]);
+
   const handleLogin = async () => {
     const localUser = await fetchUser(LocalUsername, LocalPassword);
 
@@ -33,6 +34,12 @@ const LoginPage = () => {
     } else {
       setAlreadyLogged(false);
       setLoginError("Email ou senha invalidos!");
+    }
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter" && typed) {
+      handleLogin();
     }
   };
 
@@ -143,6 +150,7 @@ const LoginPage = () => {
                     placeholder="Usuário ou e-mail"
                     value={LocalUsername}
                     onChange={(e) => setLocalUsername(e.target.value)}
+                    onKeyDown={handleEnter}
                   />
                 </div>
                 <div className={styles.inputs}>
@@ -153,6 +161,7 @@ const LoginPage = () => {
                     placeholder="Senha"
                     value={LocalPassword}
                     onChange={(e) => setLocalPassword(e.target.value)}
+                    onKeyDown={handleEnter}
                   />
                 </div>
               </div>
@@ -171,6 +180,7 @@ const LoginPage = () => {
               </div>
               <p className={styles.errormsg}>{LoginError}</p>
               <button
+                autoFocus
                 className={styles.loginbtn}
                 onClick={() => {
                   if (typed) handleLogin();

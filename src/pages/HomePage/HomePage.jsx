@@ -19,7 +19,7 @@ const ProfilePage = () => {
   }, [user]);
 
   return (
-    <div className="profile-page">
+    <div className="home-page">
       <div className="sidebar-container2">
         <Sidebar />
       </div>
