@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { assets } from "../../assets/assets";
 import SidebarItem from "./SidebarItem/SidebarItem";
 import "./Sidebar.css";
@@ -10,18 +10,27 @@ import { LoginContext } from "../../services/LoginContext";
 const Sidebar = () => {
   const { user } = useContext(UserContext);
   const { setAlreadyLogged } = useContext(LoginContext);
-
   const name = user?.name ?? "Carregando...";
   const username = user?.username ?? "Carregando...";
   const userImage = user?.userimage ?? "Carregando...";
+
   const handleLogout = () => {
     setAlreadyLogged(false);
   };
 
+  const [userimage, setUserImage] = useState("");
+  useEffect(() => {
+    if (user?.userimage) {
+      setUserImage(user?.userimage);
+    } else {
+      setUserImage(assets.userDefault);
+    }
+  }, [user]);
+
   return (
     <div className="sidebar">
       <div className="header">
-        <img src={userImage} alt="User Profile Pic" />
+        <img src={userimage} alt="User Profile Pic" />
         <div className="namenick">
           <p className="name">
             <b>{name}</b>

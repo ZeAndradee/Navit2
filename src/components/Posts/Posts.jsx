@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Posts.css";
 import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
@@ -13,11 +13,19 @@ const posts = ({
   comments,
 }) => {
   const [like, setLike] = useState(false);
-
   const handleLike = () => {
     setLike(!like);
     console.log(like);
   };
+
+  const [userimage, setUserImage] = useState("");
+  useEffect(() => {
+    if (userImage) {
+      setUserImage(userImage);
+    } else {
+      setUserImage(assets.userDefault);
+    }
+  }, [userImage]);
   return (
     <div className="post-card">
       <div className="header-info">

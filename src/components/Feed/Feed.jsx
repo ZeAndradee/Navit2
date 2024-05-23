@@ -1,33 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Create from "../Create/Create";
 import Posts from "../Posts/Posts";
 import style from "./Feed.module.css";
 import { assets } from "../../assets/assets";
+import UserPosts from "../../services/UserPosts";
+
 const Feed = ({ user }) => {
-  const username = user?.name ?? "username";
-  const userImage = user?.userimage ?? "Carregando...";
+  const [posts, setPosts] = useState(null);
+  const [userimage, setUserImage] = useState("");
+  const name = user?.name ?? "username";
+  useEffect(() => {
+    if (user?.userimage) {
+      setUserImage(user?.userimage);
+    } else {
+      setUserImage(assets.userDefault);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const userPosts = await UserPosts(user?.id?.toString());
+      if (userPosts.result) {
+        setPosts(userPosts.content);
+      } else {
+        setErrMessage(userPosts.message);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
   return (
     <div className={style.feed}>
       <div className={style.create}>
         <Create />
       </div>
       <div className={style.posts}>
-        <Posts
-          userImage={userImage}
-          username={username}
-          postImage={assets.image1}
-          postContent={"Que jogada!"}
-          likes={12}
-          comments={2}
-        />
-        <Posts
-          userImage={userImage}
-          username={username}
-          postImage={assets.image1}
-          postContent={"Mais uma vitória 🏆"}
-          likes={34}
-          comments={5}
-        />
+        {posts &&
+          [...posts]
+            .reverse()
+            .map((post, index) => (
+              <Posts
+                userImage={userimage}
+                username={name}
+                postImage={post.postimage}
+                postContent={post.postcontent}
+                likes={post.likes}
+                comments={2}
+              />
+            ))}
       </div>
     </div>
   );

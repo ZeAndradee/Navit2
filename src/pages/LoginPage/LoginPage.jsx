@@ -14,6 +14,15 @@ const LoginPage = () => {
   const { setAlreadyLogged } = useContext(LoginContext);
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const [typed, setTyped] = useState(false);
+
+  useEffect(() => {
+    if ((LocalUsername !== "") & (LocalPassword !== "")) {
+      setTyped(true);
+    } else {
+      setTyped(false);
+    }
+  }, [LocalUsername, LocalPassword]);
 
   const handleLogin = async () => {
     const localUser = await fetchUser(LocalUsername, LocalPassword);
@@ -25,6 +34,12 @@ const LoginPage = () => {
     } else {
       setAlreadyLogged(false);
       setLoginError("Email ou senha invalidos!");
+    }
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter" && typed) {
+      handleLogin();
     }
   };
 
@@ -135,6 +150,7 @@ const LoginPage = () => {
                     placeholder="Usuário ou e-mail"
                     value={LocalUsername}
                     onChange={(e) => setLocalUsername(e.target.value)}
+                    onKeyDown={handleEnter}
                   />
                 </div>
                 <div className={styles.inputs}>
@@ -145,6 +161,7 @@ const LoginPage = () => {
                     placeholder="Senha"
                     value={LocalPassword}
                     onChange={(e) => setLocalPassword(e.target.value)}
+                    onKeyDown={handleEnter}
                   />
                 </div>
               </div>
@@ -162,8 +179,17 @@ const LoginPage = () => {
                 </div>
               </div>
               <p className={styles.errormsg}>{LoginError}</p>
-              <button className={styles.loginbtn} onClick={handleLogin}>
-                Faça Login
+              <button
+                autoFocus
+                className={styles.loginbtn}
+                onClick={() => {
+                  if (typed) handleLogin();
+                }}
+                style={{
+                  backgroundColor: typed ? "#3694e7" : "#526581",
+                }}
+              >
+                Login
               </button>
             </div>
           </div>
