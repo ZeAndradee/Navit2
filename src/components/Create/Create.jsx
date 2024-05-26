@@ -81,6 +81,9 @@ const Create = () => {
       <div className={style.errMessage}>
         <p style={{ color: "red", fontSize: "13px" }}>{errMessage}</p>
       </div>
+      <div>
+        <img src={image} alt="" srcset="" />
+      </div>
       <div className={style.bottomBtn}>
         <div className={style.extraBtn}>
           <button>
@@ -96,7 +99,9 @@ const Create = () => {
             image/tiff,
             image/webp,"
             onChange={handleImageChange}
-            onClick={() => setErrMessage("")}
+            onClick={() => {
+              setErrMessage("");
+            }}
           />
           <label className={style.labelImg} htmlFor="image">
             <img
