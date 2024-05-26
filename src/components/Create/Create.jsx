@@ -10,6 +10,7 @@ const Create = () => {
   const userid = user.id;
   const [text, setText] = useState("");
   const [image, setImage] = useState(null);
+  const [errMessage, setErrMessage] = useState("");
 
   useEffect(() => {
     const textarea = document.querySelector("textarea");
@@ -35,18 +36,30 @@ const Create = () => {
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
+    const file = e.target.files[0];
+    const fileType = file.type;
+    const allowedImageTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/jpg",
+      "image/tiff",
+      "image/webp",
+    ];
+
+    if (!allowedImageTypes.includes(fileType)) {
+      setErrMessage("Formato de arquivo não suportado.");
+      return;
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await HandlePost(userid, text, image);
-      alert("Post criado com sucesso");
       setText("");
       setImage(null);
     } catch (error) {
       console.error("Erro ao criar o post:", error);
-      alert("Falha ao criar o post");
     }
   };
 
@@ -65,6 +78,9 @@ const Create = () => {
           />
         </div>
       </div>
+      <div className={style.errMessage}>
+        <p style={{ color: "red", fontSize: "13px" }}>{errMessage}</p>
+      </div>
       <div className={style.bottomBtn}>
         <div className={style.extraBtn}>
           <button>
@@ -74,8 +90,13 @@ const Create = () => {
             style={{ display: "none" }}
             type="file"
             id="image"
-            accept="image/*"
+            accept="image/jpeg,
+            image/png,
+            image/jpg,
+            image/tiff,
+            image/webp,"
             onChange={handleImageChange}
+            onClick={() => setErrMessage("")}
           />
           <label className={style.labelImg} htmlFor="image">
             <img

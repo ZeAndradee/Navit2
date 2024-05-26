@@ -26,7 +26,6 @@ const posts = ({
       setUserImage(assets.userDefault);
     }
   }, [userImage]);
-  console.warn(postImage);
   return (
     <div className="post-card">
       <div className="header-info">
