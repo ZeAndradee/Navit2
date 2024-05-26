@@ -52,6 +52,15 @@
   background-color: rgba(128, 128, 128, 0.114);
   border-radius: 5px;
 }
+.extraBtn label {
+  display: flex;
+  padding: 2px;
+}
+
+.extraBtn label:hover {
+  background-color: rgba(128, 128, 128, 0.114);
+  border-radius: 5px;
+}
 
 .labelImg {
   display: flex;
