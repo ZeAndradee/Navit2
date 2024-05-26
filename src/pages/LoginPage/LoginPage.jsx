@@ -180,7 +180,6 @@ const LoginPage = () => {
               </div>
               <p className={styles.errormsg}>{LoginError}</p>
               <button
-                autoFocus
                 className={styles.loginbtn}
                 onClick={() => {
                   if (typed) handleLogin();

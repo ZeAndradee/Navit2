@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.sidebaritem button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .sidebaritem:hover {
   background-color: rgba(128, 128, 128, 0.114);
 }
