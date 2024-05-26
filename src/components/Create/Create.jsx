@@ -96,7 +96,9 @@ const Create = () => {
             image/tiff,
             image/webp,"
             onChange={handleImageChange}
-            onClick={() => setErrMessage("")}
+            onClick={() => {
+              setErrMessage("");
+            }}
           />
           <label className={style.labelImg} htmlFor="image">
             <img

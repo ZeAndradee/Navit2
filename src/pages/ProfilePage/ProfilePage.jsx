@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Posts from "../../components/Posts/Posts";
 import "./ProfilePage.css";
