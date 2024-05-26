@@ -26,6 +26,7 @@ const posts = ({
       setUserImage(assets.userDefault);
     }
   }, [userImage]);
+  console.warn(postImage);
   return (
     <div className="post-card">
       <div className="header-info">
@@ -37,31 +38,56 @@ const posts = ({
           <img src={icons.more_icon} alt="more_icon" srcSet="" />
         </div>
       </div>
-      <div className="content">
-        <div className="imageContent">
-          <img src={postImage} alt="postImage" />
-        </div>
-        <div className="postInfo">
-          <div className="likesComments">
-            <div className="info">
-              <button onClick={handleLike}>
-                <img src={icons.heart_icon} alt="heart_icon" />
-              </button>
-              <span>{likes}</span>
+      {postImage && (
+        <div className="content">
+          <div className="imageContent">
+            <img src={postImage} alt="postImage" />
+          </div>
+          <div className="postInfo">
+            <div className="likesComments">
+              <div className="info">
+                <button onClick={handleLike}>
+                  <img src={icons.heart_icon} alt="heart_icon" />
+                </button>
+                <span>{likes}</span>
+              </div>
+              <div className="info">
+                <button>
+                  <img src={icons.comment_icon} alt="comment_icon" />
+                </button>
+                <span>{comments}</span>
+              </div>
             </div>
-            <div className="info">
-              <button>
-                <img src={icons.comment_icon} alt="comment_icon" />
-              </button>
-              <span>{comments}</span>
+          </div>
+          <div className="postContent">
+            <p>{username}</p>
+            <span>{postContent}</span>
+          </div>
+        </div>
+      )}
+      {!postImage && (
+        <div className="content">
+          <div className="postContent">
+            <span>{postContent}</span>
+          </div>
+          <div className="postInfo">
+            <div className="likesComments">
+              <div className="info">
+                <button onClick={handleLike}>
+                  <img src={icons.heart_icon} alt="heart_icon" />
+                </button>
+                <span>{likes}</span>
+              </div>
+              <div className="info">
+                <button>
+                  <img src={icons.comment_icon} alt="comment_icon" />
+                </button>
+                <span>{comments}</span>
+              </div>
             </div>
           </div>
         </div>
-        <div className="postContent">
-          <p>{username}</p>
-          <span>{postContent}</span>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

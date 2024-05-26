@@ -53,14 +53,15 @@
   border-radius: 5px;
 }
 
+.labelImg {
+  display: flex;
+}
+
 .sendBtn {
   display: flex;
   background-color: var(--text-color2);
   padding: 7px 10px;
   border-radius: 5px;
-}
-
-.sendBtn button {
   color: white;
 }
 

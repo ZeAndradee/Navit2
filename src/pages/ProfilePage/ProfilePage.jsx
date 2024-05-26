@@ -101,6 +101,7 @@ const ProfilePage = () => {
                 .reverse()
                 .map((post, index) => (
                   <Posts
+                    key={index}
                     userImage={userimage}
                     username={name}
                     postImage={post.postimage}
