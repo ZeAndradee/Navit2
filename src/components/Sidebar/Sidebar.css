@@ -52,7 +52,7 @@
   margin-left: 15px;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1271px) {
   .sidebar {
     flex-direction: column;
     width: fit-content;

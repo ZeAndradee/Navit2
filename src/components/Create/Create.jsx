@@ -4,6 +4,8 @@ import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
 import { UserContext } from "../../services/UserContext";
 import { HandlePost } from "../../services/HandlePost";
+import Match from "../Match/Match";
+
 const Create = () => {
   const { user } = useContext(UserContext);
   const [content, setContent] = useState("");
@@ -11,6 +13,7 @@ const Create = () => {
   const [text, setText] = useState("");
   const [image, setImage] = useState(null);
   const [errMessage, setErrMessage] = useState("");
+  const [extraCard, setExtraCard] = useState(null);
 
   useEffect(() => {
     const textarea = document.querySelector("textarea");
@@ -78,12 +81,30 @@ const Create = () => {
           />
         </div>
       </div>
+      {extraCard === "partida" && (
+        <>
+          <Match />
+          <div className={style.cancelBtn}>
+            <button
+              onClick={() => {
+                setExtraCard("");
+              }}
+            >
+              Cancelar Partida
+            </button>
+          </div>
+        </>
+      )}
       <div className={style.errMessage}>
         <p style={{ color: "red", fontSize: "13px" }}>{errMessage}</p>
       </div>
       <div className={style.bottomBtn}>
         <div className={style.extraBtn}>
-          <button>
+          <button
+            onClick={() => {
+              setExtraCard("partida");
+            }}
+          >
             <img src={icons.tennis_icon} alt="tennis_icon" />
           </button>
           <input

@@ -23,6 +23,10 @@ import tennis_icon from "./tennis_icon.svg";
 import image_icon from "./image_icon.svg";
 import gif_icon from "./gif_icon.svg";
 import emoji_icon from "./emoji_icon.svg";
+import plus_icon from "./plus_icon.svg";
+import live_icon from "./live_icon.svg";
+import spain_icon from "./spain_icon.svg";
+import italy_icon from "./italy_icon.svg";
 export const icons = {
   home_icon,
   pfp_icon,
@@ -49,4 +53,8 @@ export const icons = {
   image_icon,
   gif_icon,
   emoji_icon,
+  plus_icon,
+  live_icon,
+  spain_icon,
+  italy_icon,
 };
