@@ -1,9 +1,8 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  border-right: var(--secondary-color) 1px solid;
   width: 260px;
-  padding: 20px;
+  padding: 0 20px;
   overflow: auto;
   text-wrap: nowrap;
 }

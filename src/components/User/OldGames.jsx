@@ -1,19 +1,20 @@
 import React from "react";
-import style from "./FriendsMatch.module.css";
-import { icons } from "../../../assets/Icons/icons";
-const FriendsMatch = () => {
+import style from "./OldGames.module.css";
+import { icons } from "../../assets/Icons/icons";
+const OldGames = () => {
   return (
-    <div className={style.friendsContainer}>
+    <div className={style.oldGamesContainer}>
       <div className={style.header}>
-        <span>Amigos</span>
+        <span>Seus Últimos Jogos</span>
+        <img src={icons.rewind_icon} alt="" srcset="" />
       </div>
       <div className={style.gameSessions}>
         <div className={style.matchSession}>
-          <span className={style.matchCategory}>Amistoso</span>
+          <span className={style.matchCategory}>Encerrado</span>
           <div className={style.usersInfo}>
             <div className={style.userInfo}>
               <img src={icons.spain_icon} alt="" srcset="" />
-              <span>Player 1</span>
+              <span>Você</span>
               <div className={style.score}>3</div>
             </div>
             <div className={style.userInfo}>
@@ -25,11 +26,11 @@ const FriendsMatch = () => {
         </div>
 
         <div className={style.matchSession}>
-          <span className={style.matchCategory}>Torneio</span>
+          <span className={style.matchCategory}>Encerrado</span>
           <div className={style.usersInfo}>
             <div className={style.userInfo}>
               <img src={icons.italy_icon} alt="" srcset="" />
-              <span>Player 4</span>
+              <span>Você</span>
               <div className={style.score}>4</div>
             </div>
             <div className={style.userInfo}>
@@ -45,7 +46,7 @@ const FriendsMatch = () => {
           <div className={style.usersInfo}>
             <div className={style.userInfo}>
               <img src={icons.italy_icon} alt="" srcset="" />
-              <span>Player 5</span>
+              <span>Você</span>
               <div className={style.score}>4</div>
             </div>
             <div className={style.userInfo}>
@@ -60,4 +61,4 @@ const FriendsMatch = () => {
   );
 };
 
-export default FriendsMatch;
+export default OldGames;

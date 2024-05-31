@@ -1,32 +1,36 @@
 .home-page {
   display: flex;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
+  padding-bottom: 15px;
+  overflow: auto;
+  gap: 10px;
 }
 
-.sidebar-container2 {
+.sidebar-container {
   display: flex;
 }
 
 .feed-container {
   display: flex;
   flex-direction: row;
-  width: 100%;
   overflow: auto;
   justify-content: center;
-  padding: 50px 20px 25px 20px;
+  padding: 0px 20px;
 }
 
 .feed {
   display: flex;
+  padding-top: 30px;
 }
 
 .side-container {
   display: flex;
+  padding-top: 30px;
   flex-direction: column;
   height: 100%;
   justify-self: end;
-  margin-left: 30px;
   gap: 30px;
 }
 
@@ -37,4 +41,10 @@
 
 .logo svg {
   width: 300px;
+}
+
+@media (max-width: 1100px) {
+  .side-container {
+    display: none;
+  }
 }

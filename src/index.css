@@ -80,7 +80,7 @@ input:focus {
 }
 
 ::-webkit-scrollbar {
-  width: 6px; /* Largura da barra de rolagem vertical */
+  width: 0px; /* Largura da barra de rolagem vertical */
 }
 
 /* Fundo da barra de rolagem */

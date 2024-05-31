@@ -1,10 +1,10 @@
-.friendsContainer {
+.oldGamesContainer {
   display: flex;
   flex-direction: column;
-  border: var(--secondary-color) 1px solid;
   gap: 20px;
   border-radius: 5px;
   padding-bottom: 10px;
+  border: var(--secondary-color) 1px solid;
 }
 
 .header {

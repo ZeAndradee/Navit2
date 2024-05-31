@@ -51,6 +51,8 @@ const Sidebar = () => {
             Icon={icons.notification_icon}
             MenuOption={"Notificações"}
           />
+          <SidebarItem Icon={icons.games_icon} MenuOption={"Painel de Jogos"} />
+
           <SidebarItem Icon={icons.wallet_icon} MenuOption={"Pagamentos"} />
         </div>
 

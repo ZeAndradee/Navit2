@@ -27,6 +27,7 @@ import plus_icon from "./plus_icon.svg";
 import live_icon from "./live_icon.svg";
 import spain_icon from "./spain_icon.svg";
 import italy_icon from "./italy_icon.svg";
+import rewind_icon from "./rewind_icon.svg";
 export const icons = {
   home_icon,
   pfp_icon,
@@ -57,4 +58,5 @@ export const icons = {
   live_icon,
   spain_icon,
   italy_icon,
+  rewind_icon,
 };
