@@ -7,7 +7,7 @@ const getUserPosts = async (userid) => {
     const userPosts = response.data;
 
     const posts = userPosts.filter((post) => {
-      return post.userid === userid;
+      return post.userid.toString() === userid;
     });
 
     if (posts) {

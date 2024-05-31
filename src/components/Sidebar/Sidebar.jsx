@@ -44,7 +44,7 @@ const Sidebar = () => {
           <Link to={"/"}>
             <SidebarItem Icon={icons.home_icon} MenuOption={"Menu Inicial"} />
           </Link>
-          <Link to={"/profile"}>
+          <Link to={`/profile/${username}`}>
             <SidebarItem Icon={icons.pfp_icon} MenuOption={"Meu Perfil"} />
           </Link>
           <SidebarItem

@@ -19,16 +19,18 @@ const Feed = ({ user }) => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const userPosts = await UserPosts(user?.id?.toString());
-      if (userPosts.result) {
-        setPosts(userPosts.content);
-      } else {
-        setErrMessage(userPosts.message);
+      if (user && user.id) {
+        const userPosts = await UserPosts(user?.id?.toString());
+        if (userPosts.result) {
+          setPosts(userPosts.content);
+        } else {
+          setErrMessage(userPosts.message);
+        }
       }
     };
 
     fetchPosts();
-  }, []);
+  }, [user]);
 
   return (
     <div className={style.feed}>

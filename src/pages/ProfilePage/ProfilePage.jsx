@@ -4,18 +4,29 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import Posts from "../../components/Posts/Posts";
 import "./ProfilePage.css";
 import { assets } from "../../assets/assets";
-import { UserContext } from "../../services/UserContext";
 import { icons } from "../../assets/Icons/icons";
 import UserPosts from "../../services/UserPosts";
+import { useParams } from "react-router-dom";
+import fetchUserProfile from "../../services/FetchUserProfile";
 
 const ProfilePage = () => {
-  const { user } = useContext(UserContext);
+  const { username } = useParams();
+  const [user, setUser] = useState(null);
   const [userimage, setUserImage] = useState("");
   const name = user?.name ?? "username";
-  const username = user?.username ?? "username";
   const userBio = user?.userbio ?? "Carregando...";
   const [errMessage, setErrMessage] = useState(null);
   const [posts, setPosts] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const userProfile = await fetchUserProfile(username);
+      if (userProfile) {
+        setUser(userProfile);
+      }
+    };
+    fetchData();
+  }, [username]);
 
   useEffect(() => {
     if (user?.userimage) {
@@ -36,7 +47,7 @@ const ProfilePage = () => {
     };
 
     fetchPosts();
-  }, []);
+  }, [user]);
 
   return (
     <div className="profile-page">

@@ -119,3 +119,59 @@
 .matchResult input::placeholder {
   text-align: center;
 }
+
+/* Bottom btn */
+.bottomBtn {
+  display: flex;
+  padding-top: 7px;
+  justify-content: space-between;
+}
+
+.extraBtn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.extraBtn button {
+  display: flex;
+  padding: 2px;
+}
+
+.extraBtn button:hover {
+  background-color: rgba(128, 128, 128, 0.114);
+  border-radius: 5px;
+}
+.extraBtn label {
+  display: flex;
+  padding: 2px;
+}
+
+.extraBtn label:hover {
+  background-color: rgba(128, 128, 128, 0.114);
+  border-radius: 5px;
+}
+
+.labelImg {
+  display: flex;
+}
+
+.sendBtn {
+  display: flex;
+  background-color: var(--text-color2);
+  padding: 7px 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.cancelBtn button {
+  display: flex;
+  width: 100%;
+  color: #ff253f;
+  padding: 16px 0;
+  justify-content: center;
+  border: var(--secondary-color) 1px solid;
+  border-radius: 5px;
+  font-weight: 500;
+  margin-top: 10px;
+}
