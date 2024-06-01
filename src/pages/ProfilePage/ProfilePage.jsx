@@ -119,7 +119,7 @@ const ProfilePage = () => {
                     postImage={post.postimage}
                     postContent={post.postcontent}
                     likes={post.likes}
-                    comments={2}
+                    comments={post.comments}
                   />
                 ))}
           </div>

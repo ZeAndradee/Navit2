@@ -52,6 +52,7 @@ const Match = () => {
       player2,
       sets,
       matchTime,
+      matchPlace,
       p1set0,
       p2set0,
       p1set1,
@@ -321,16 +322,6 @@ const Match = () => {
           >
             <img src={icons.tennis_icon} alt="tennis_icon" />
           </button>
-          <input
-            style={{ display: "none" }}
-            type="file"
-            id="image"
-            accept="image/jpeg,
-            image/png,
-            image/jpg,
-            image/tiff,
-            image/webp,"
-          />
           <label className={style.labelImg} htmlFor="image">
             <img
               src={icons.image_icon}
