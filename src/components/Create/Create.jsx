@@ -9,7 +9,6 @@ import { ExtraCardContext } from "../../services/ExtraCardContext";
 
 const Create = () => {
   const { user } = useContext(UserContext);
-  const [content, setContent] = useState("");
   const userid = user.id;
   const [text, setText] = useState("");
   const [image, setImage] = useState(null);
@@ -69,19 +68,23 @@ const Create = () => {
 
   return (
     <div className={style.createPost}>
-      <div className={style.imgContent}>
-        <div className={style.userImage}>
-          <img src={userimage} alt="userImage" />
-        </div>
-        <div className={style.postContent}>
-          <textarea
-            id="text"
-            value={text}
-            onChange={handleTextChange}
-            placeholder="O que está acontecendo?"
-          />
-        </div>
-      </div>
+      {!extraCard && (
+        <>
+          <div className={style.imgContent}>
+            <div className={style.userImage}>
+              <img src={userimage} alt="userImage" />
+            </div>
+            <div className={style.postContent}>
+              <textarea
+                id="text"
+                value={text}
+                onChange={handleTextChange}
+                placeholder="O que está acontecendo?"
+              />
+            </div>
+          </div>
+        </>
+      )}
       {extraCard === "partida" && (
         <>
           <Match />

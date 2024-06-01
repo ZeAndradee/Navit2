@@ -12,6 +12,7 @@ const Match = () => {
   const userimage = user?.userimage;
   const { setExtraCard } = useContext(ExtraCardContext);
   const [err, setErr] = useState(false);
+  const [content, setContent] = useState("");
 
   const [sets, setSets] = useState(3);
   const [player2, setPlayer2] = useState("");
@@ -32,6 +33,19 @@ const Match = () => {
   const [p2set4, setP2Set4] = useState("");
   const [p2set5, setP2Set5] = useState("");
 
+  useEffect(() => {
+    const textarea = document.querySelector("textarea");
+    textarea.addEventListener("keydown", (e) => {
+      textarea.style.height = "auto";
+      let taHeight = e.target.scrollHeight;
+      textarea.style.height = `${taHeight}px`;
+    });
+  }, []);
+
+  const handleTextChange = (e) => {
+    setContent(e.target.value);
+  };
+
   const handleMatches = async () => {
     const result = await handlePartidas(
       username,
@@ -49,7 +63,8 @@ const Match = () => {
       p1set4,
       p2set4,
       p1set5,
-      p2set5
+      p2set5,
+      content
     );
     if (result.result) {
       setExtraCard("");
@@ -58,6 +73,19 @@ const Match = () => {
 
   return (
     <div className={style.matchContainer}>
+      <div className={style.imgContent}>
+        <div className={style.userImage}>
+          <img src={userimage} alt="userImage" />
+        </div>
+        <div className={style.postContent}>
+          <textarea
+            id="text"
+            value={content}
+            onChange={handleTextChange}
+            placeholder="O que está acontecendo?"
+          />
+        </div>
+      </div>
       <div className={style.inputs}>
         <div className={style.inputPlus}>
           <div className={style.inputPlayer}>

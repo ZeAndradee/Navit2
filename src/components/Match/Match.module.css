@@ -6,6 +6,31 @@
   margin-top: 5px;
 }
 
+.imgContent {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 15px;
+}
+
+.imgContent img {
+  height: 45px;
+  border-radius: 50%;
+}
+
+.postContent {
+  display: flex;
+  width: 100%;
+}
+
+.postContent textarea {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 400;
+  padding-top: 15px;
+  resize: none;
+}
+
 .inputs {
   display: flex;
   flex-direction: column;

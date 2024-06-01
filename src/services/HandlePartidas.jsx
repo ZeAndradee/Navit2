@@ -17,7 +17,8 @@ const handlePartidas = async (
   p1set4,
   p2set4,
   p1set5,
-  p2set5
+  p2set5,
+  content
 ) => {
   const BASE_URL = "https://tennisly-api-1.onrender.com/matches";
   try {
@@ -45,6 +46,7 @@ const handlePartidas = async (
           set4p2: p2set4,
           set5p1: p1set5,
           set5p2: p2set5,
+          content,
         });
         return { result: true, response: "Partida criada com sucesso." };
       } catch (error) {
