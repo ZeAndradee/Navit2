@@ -3,29 +3,57 @@ import style from "./Match.module.css";
 import { UserContext } from "../../services/UserContext";
 import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
-import { HandleMatch } from "../../services/HandleMatch";
 import { ExtraCardContext } from "../../services/ExtraCardContext";
+import handlePartidas from "../../services/HandlePartidas";
+
 const Match = () => {
   const { user } = useContext(UserContext);
   const username = user?.username;
   const userimage = user?.userimage;
-  const [sets, setSets] = useState(5);
-  const [err, setErr] = useState(false);
-  const [player2, setPlayer2] = useState("");
   const { setExtraCard } = useContext(ExtraCardContext);
+  const [err, setErr] = useState(false);
 
-  useEffect(() => {
-    if (sets > 7 || sets < 1) {
-      setErr(true);
-      setSets(5);
-    } else {
-      setErr(false);
+  const [sets, setSets] = useState(3);
+  const [player2, setPlayer2] = useState("");
+  const [matchTime, setMatchTime] = useState("");
+  const [matchPlace, setMatchPlace] = useState("");
+
+  const [p1set0, setP1Set0] = useState("");
+  const [p1set1, setP1Set1] = useState("");
+  const [p1set2, setP1Set2] = useState("");
+  const [p1set3, setP1Set3] = useState("");
+  const [p1set4, setP1Set4] = useState("");
+  const [p1set5, setP1Set5] = useState("");
+
+  const [p2set0, setP2Set0] = useState("");
+  const [p2set1, setP2Set1] = useState("");
+  const [p2set2, setP2Set2] = useState("");
+  const [p2set3, setP2Set3] = useState("");
+  const [p2set4, setP2Set4] = useState("");
+  const [p2set5, setP2Set5] = useState("");
+
+  const handleMatches = async () => {
+    const result = await handlePartidas(
+      username,
+      player2,
+      sets,
+      matchTime,
+      p1set0,
+      p2set0,
+      p1set1,
+      p2set1,
+      p1set2,
+      p2set2,
+      p1set3,
+      p2set3,
+      p1set4,
+      p2set4,
+      p1set5,
+      p2set5
+    );
+    if (result.result) {
+      setExtraCard("");
     }
-  }, [sets]);
-
-  const handleMatch = async () => {
-    setExtraCard("");
-    const res = await HandleMatch();
   };
 
   return (
@@ -65,7 +93,11 @@ const Match = () => {
         </div>
         <div className={style.matchData}>
           <span>Tempo de Partida:</span>
-          <input type="text" placeholder="2:36" />
+          <input
+            type="text"
+            placeholder="2:36"
+            onChange={(e) => setMatchTime(e.target.value)}
+          />
         </div>
         <div className={style.matchData}>
           <span>Local da Partida:</span>
@@ -73,6 +105,7 @@ const Match = () => {
             type="text"
             placeholder="Tenis Club"
             style={{ width: "160px" }}
+            onChange={(e) => setMatchPlace(e.target.value)}
           />
         </div>
       </div>
@@ -81,25 +114,166 @@ const Match = () => {
           <span>Resultado Final:</span>
           <div className={style.matchResult}>
             <img src={userimage} alt="" />
-            <input type="text" placeholder="6" />
+            <input
+              type="text"
+              placeholder="0"
+              onChange={(e) => setP1Set0(e.target.value)}
+            />
           </div>
           <div className={style.matchResult}>
             <img src={assets.userDefault} alt="" />
-            <input type="text" placeholder="2" />
+            <input
+              type="text"
+              placeholder="0"
+              onChange={(e) => setP2Set0(e.target.value)}
+            />
           </div>
         </div>
-        {!err &&
-          Array.from({ length: sets }, (_, sets) => (
-            <div key={sets} className={style.matchResults}>
-              <span>Sets {sets + 1}:</span>
+
+        {sets == 3 && (
+          <>
+            <div className={style.matchResults}>
+              <span>Sets 1:</span>
               <div className={style.matchResult}>
-                <input type="text" placeholder="6" />
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP1Set1(e.target.value)}
+                />
               </div>
               <div className={style.matchResult}>
-                <input type="text" placeholder="2" />
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP2Set1(e.target.value)}
+                />
               </div>
             </div>
-          ))}
+            <div className={style.matchResults}>
+              <span>Sets 2:</span>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP1Set2(e.target.value)}
+                />
+              </div>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP2Set2(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className={style.matchResults}>
+              <span>Sets 3:</span>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP1Set3(e.target.value)}
+                />
+              </div>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP2Set3(e.target.value)}
+                />
+              </div>
+            </div>
+          </>
+        )}
+        {sets == 5 && (
+          <>
+            <div className={style.matchResults}>
+              <span>Sets 1:</span>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP1Set1(e.target.value)}
+                />
+              </div>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP2Set1(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className={style.matchResults}>
+              <span>Sets 2:</span>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP1Set2(e.target.value)}
+                />
+              </div>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP2Set2(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className={style.matchResults}>
+              <span>Sets 3:</span>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP1Set3(e.target.value)}
+                />
+              </div>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP2Set3(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className={style.matchResults}>
+              <span>Sets 4:</span>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP1Set4(e.target.value)}
+                />
+              </div>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP2Set4(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className={style.matchResults}>
+              <span>Sets 5:</span>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP1Set5(e.target.value)}
+                />
+              </div>
+              <div className={style.matchResult}>
+                <input
+                  type="text"
+                  placeholder="0"
+                  onChange={(e) => setP2Set5(e.target.value)}
+                />
+              </div>
+            </div>
+          </>
+        )}
       </div>
       <div className={style.cancelBtn}>
         <button
@@ -151,7 +325,7 @@ const Match = () => {
             />
           </button>
         </div>
-        <button className={style.sendBtn} type="submit" onClick={handleMatch}>
+        <button className={style.sendBtn} type="submit" onClick={handleMatches}>
           Postar
         </button>
       </div>

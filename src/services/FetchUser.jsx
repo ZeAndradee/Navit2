@@ -12,7 +12,6 @@ const fetchUser = async (username, password) => {
   );
 
   if (!user) {
-    console.log("O usuario não foi encontrado :(");
     return null;
   }
 
