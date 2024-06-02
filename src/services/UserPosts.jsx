@@ -12,19 +12,27 @@ const getUserPosts = async (userid) => {
     const userPosts = response1.data;
     const userMatches = response2.data;
 
+    console.log("Posts,matches", posts, matches);
     const posts = userPosts.filter((post) => {
       return post.userid.toString() === userid;
     });
 
     const matches = userMatches.filter((match) => {
-      return match.idplayer1.toString() === userid;
-      match.idplayer2.toString() === userid;
+      return (
+        match.idplayer1.toString() === userid ||
+        match.idplayer2.toString() === userid
+      );
     });
+
+    const userPostsData = posts.length;
+    const userMatchesData = matches.length;
+
+    const userAllPosts = userPostsData + userMatchesData;
 
     if (posts || matches) {
       return {
         result: true,
-        content: { posts, matches },
+        content: { posts, matches, userAllPosts, userMatchesData },
         message: "Postagens e partidas obtidas com sucesso",
       };
     } else {

@@ -10,7 +10,10 @@ const Feed = ({ user }) => {
   const [posts, setPosts] = useState(null);
   const [matches, setMatches] = useState(null);
   const [userimage, setUserImage] = useState("");
+  const [errMessage, setErrMessage] = useState("");
+
   const name = user?.name ?? "username";
+  const username = user?.username ?? "username";
   useEffect(() => {
     if (user?.userimage) {
       setUserImage(user?.userimage);
@@ -45,8 +48,6 @@ const Feed = ({ user }) => {
     (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
   );
 
-  console.log("SortedItems", sortedItems);
-
   return (
     <div className={style.feed}>
       <div className={style.create}>
@@ -58,8 +59,11 @@ const Feed = ({ user }) => {
             item.type === "post" ? (
               <Posts
                 key={index}
+                postid={item.postid}
+                userid={item.userid}
                 userImage={userimage}
-                username={name}
+                name={name}
+                username={username}
                 postImage={item.postimage}
                 postContent={item.postcontent}
                 likes={item.likes}
