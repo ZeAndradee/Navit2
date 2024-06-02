@@ -9,7 +9,6 @@ const fetchUserProfile = async (username, id) => {
     (user) => user.username === username || user.id === id
   );
   if (!user) {
-    console.log("O usuario não foi encontrado :(");
     return null;
   }
   return user;

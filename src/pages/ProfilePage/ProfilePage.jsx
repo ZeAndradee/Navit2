@@ -9,6 +9,7 @@ import UserPosts from "../../services/UserPosts";
 import { useParams } from "react-router-dom";
 import fetchUserProfile from "../../services/FetchUserProfile";
 import Matches from "../../components/Posts/Matches/Matches";
+import getUserPosts from "../../services/UserPosts";
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -43,7 +44,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const userPosts = await UserPosts(user?.id?.toString());
+      const userPosts = await getUserPosts(user?.id?.toString());
       if (userPosts.result) {
         const { posts, matches, userAllPosts, userMatchesData } =
           userPosts.content;
@@ -55,7 +56,6 @@ const ProfilePage = () => {
         setErrMessage(userPosts.message);
       }
     };
-    console.log(posts);
     fetchPosts();
   }, [user]);
 
