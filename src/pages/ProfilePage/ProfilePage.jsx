@@ -9,6 +9,7 @@ import UserPosts from "../../services/UserPosts";
 import { useParams } from "react-router-dom";
 import fetchUserProfile from "../../services/FetchUserProfile";
 import Matches from "../../components/Posts/Matches/Matches";
+import getUserPosts from "../../services/UserPosts";
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -19,6 +20,9 @@ const ProfilePage = () => {
   const [errMessage, setErrMessage] = useState(null);
   const [posts, setPosts] = useState(null);
   const [matches, setMatches] = useState(null);
+  const [userPostsData, setUserPostsData] = useState(0);
+  const [userTorneiosData, setUserTorneiosData] = useState(0);
+  const [userMatchesData, setUserMatchesData] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,16 +44,18 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const userPosts = await UserPosts(user?.id?.toString());
+      const userPosts = await getUserPosts(user?.id?.toString());
       if (userPosts.result) {
-        const { posts, matches } = userPosts.content;
+        const { posts, matches, userAllPosts, userMatchesData } =
+          userPosts.content;
         setPosts(posts);
         setMatches(matches);
+        setUserPostsData(userAllPosts);
+        setUserMatchesData(userMatchesData);
       } else {
         setErrMessage(userPosts.message);
       }
     };
-
     fetchPosts();
   }, [user]);
 
@@ -85,19 +91,19 @@ const ProfilePage = () => {
                 <div className="userinfo">
                   <div className="data">
                     <span>
-                      <b>37</b>
+                      <b>{userPostsData}</b>
                     </span>
                     <span>posts</span>
                   </div>
                   <div className="data">
                     <span>
-                      <b>18</b>
+                      <b>{userTorneiosData}</b>
                     </span>
                     <span>torneios</span>
                   </div>
                   <div className="data">
                     <span>
-                      <b>273</b>
+                      <b>{userMatchesData}</b>
                     </span>
                     <span>partidas</span>
                   </div>
@@ -127,7 +133,8 @@ const ProfilePage = () => {
                   <Posts
                     key={index}
                     userImage={userimage}
-                    username={name}
+                    name={name}
+                    username={username}
                     postImage={item.postimage}
                     postContent={item.postcontent}
                     likes={item.likes}

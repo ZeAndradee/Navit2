@@ -21,7 +21,6 @@ const handlePartidas = async (
   p2set5,
   content
 ) => {
-  console.log("epa");
   const likes = 0;
   const comments = 0;
   const BASE_URL = "https://tennisly-api-1.onrender.com/matches";
