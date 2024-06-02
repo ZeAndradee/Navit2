@@ -17,6 +17,7 @@ const ProfilePage = () => {
   const userBio = user?.userbio ?? "Carregando...";
   const [errMessage, setErrMessage] = useState(null);
   const [posts, setPosts] = useState(null);
+  const [matches, setMatches] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +41,9 @@ const ProfilePage = () => {
     const fetchPosts = async () => {
       const userPosts = await UserPosts(user?.id?.toString());
       if (userPosts.result) {
-        setPosts(userPosts.content);
+        const { posts, matches } = userPosts.content;
+        setPosts(posts);
+        setMatches(matches);
       } else {
         setErrMessage(userPosts.message);
       }

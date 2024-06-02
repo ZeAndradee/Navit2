@@ -12,11 +12,11 @@ const posts = ({
   likes,
   comments,
 }) => {
-  const [like, setLike] = useState(false);
-  const handleLike = () => {
-    setLike(!like);
-    console.log(like);
-  };
+  // const [like, setLike] = useState(false);
+  // const handleLike = () => {
+  //   setLike(!like);
+  //   console.log(like);
+  // };
 
   const [userimage, setUserImage] = useState("");
   useEffect(() => {
@@ -26,6 +26,7 @@ const posts = ({
       setUserImage(assets.userDefault);
     }
   }, [userImage]);
+
   return (
     <div className="post-card">
       <div className="header-info">
@@ -45,7 +46,7 @@ const posts = ({
           <div className="postInfo">
             <div className="likesComments">
               <div className="info">
-                <button onClick={handleLike}>
+                <button>
                   <img src={icons.heart_icon} alt="heart_icon" />
                 </button>
                 <span>{likes}</span>
@@ -72,7 +73,7 @@ const posts = ({
           <div className="postInfo">
             <div className="likesComments">
               <div className="info">
-                <button onClick={handleLike}>
+                <button>
                   <img src={icons.heart_icon} alt="heart_icon" />
                 </button>
                 <span>{likes}</span>

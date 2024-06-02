@@ -4,9 +4,11 @@ import Posts from "../Posts/Posts";
 import style from "./Feed.module.css";
 import { assets } from "../../assets/assets";
 import UserPosts from "../../services/UserPosts";
+import Matches from "../Posts/Matches/Matches";
 
 const Feed = ({ user }) => {
   const [posts, setPosts] = useState(null);
+  const [matches, setMatches] = useState(null);
   const [userimage, setUserImage] = useState("");
   const name = user?.name ?? "username";
   useEffect(() => {
@@ -22,7 +24,10 @@ const Feed = ({ user }) => {
       if (user && user.id) {
         const userPosts = await UserPosts(user?.id?.toString());
         if (userPosts.result) {
-          setPosts(userPosts.content);
+          const { posts, matches } = userPosts.content;
+          setPosts(posts);
+          setMatches(matches);
+          console.log(matches);
         } else {
           setErrMessage(userPosts.message);
         }
@@ -38,7 +43,7 @@ const Feed = ({ user }) => {
         <Create />
       </div>
       <div className={style.posts}>
-        {posts &&
+        {/* {posts &&
           [...posts]
             .reverse()
             .map((post, index) => (
@@ -50,6 +55,26 @@ const Feed = ({ user }) => {
                 postContent={post.postcontent}
                 likes={post.likes}
                 comments={post.comments}
+              />
+            ))} */}
+        {matches &&
+          [...matches]
+            .reverse()
+            .map((matches, index) => (
+              <Matches
+                key={index}
+                idmatch={matches.idmatch}
+                timestamp={matches.timestamp}
+                idplayer1={matches.idplayer1}
+                idplayer2={matches.idplayer2}
+                sets={matches.sets}
+                matchtime={matches.matchtime}
+                matchplace={matches.matchplace}
+                fscorep1={matches.fscorep1}
+                fscorep2={matches.fscorep2}
+                content={matches.content}
+                likes={matches.likes}
+                comments={matches.comments}
               />
             ))}
       </div>
