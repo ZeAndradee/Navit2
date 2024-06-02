@@ -4,7 +4,6 @@
   border: var(--secondary-color) 1px solid;
   border-radius: 5px;
   width: 100%;
-  padding: 5px 0px;
 }
 
 .headerInfo {
@@ -12,7 +11,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 10px 10px;
 }
 
 .headerInfo img {
@@ -44,6 +43,7 @@
 
 .postInfo {
   margin-top: 7px;
+  border-top: var(--secondary-color) 1px solid;
 }
 
 .postContent {
@@ -70,7 +70,9 @@
 }
 
 .headerMatch span {
+  font-family: "Poppins", "Inter";
   font-weight: 600;
+  font-size: 18px;
 }
 
 .matchData {
@@ -90,10 +92,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 }
 .matchDataImgW span {
   text-align: center;
   width: 200px;
+  font-weight: 500;
 }
 
 .matchDataImgL {
@@ -101,10 +105,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 }
 .matchDataImgL span {
   text-align: center;
   width: 200px;
+  font-weight: 500;
 }
 
 .matchDataImgW img {
@@ -120,13 +126,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Poppins", "Inter";
+  gap: 10px;
+}
+
+.scoreMatch {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.matchStatus {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.content {
+  padding: 7px 10px;
 }
 
 .likesComments {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 5px 10px;
+  padding: 7px 10px;
 }
 
 .info {

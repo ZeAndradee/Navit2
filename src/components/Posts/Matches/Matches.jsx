@@ -67,10 +67,10 @@ const Matches = ({
             <span>{p1name}</span>
           </div>
           <div className={style.score}>
-            <span>
+            <span className={style.scoreMatch}>
               {fscorep1} - {fscorep2}
             </span>
-            <span>Finalizado</span>
+            <span className={style.matchStatus}>Finalizado</span>
           </div>
           <div className={style.matchDataImgL}>
             <img src={p2image} alt="" srcset="" />
@@ -79,23 +79,23 @@ const Matches = ({
         </div>
       </div>
       <div className={style.content}>
-        <div className={style.postContent}>
+        {/* <div className={style.postContent}>
           <span>{content}</span>
-        </div>
-        <div className={style.postInfo}>
-          <div className={style.likesComments}>
-            <div className={style.info}>
-              <button>
-                <img src={icons.heart_icon} alt="heart_icon" />
-              </button>
-              <span>{likes}</span>
-            </div>
-            <div className={style.info}>
-              <button>
-                <img src={icons.comment_icon} alt="comment_icon" />
-              </button>
-              <span>{comments}</span>
-            </div>
+        </div> */}
+      </div>
+      <div className={style.postInfo}>
+        <div className={style.likesComments}>
+          <div className={style.info}>
+            <button>
+              <img src={icons.heart_icon} alt="heart_icon" />
+            </button>
+            <span>{likes}</span>
+          </div>
+          <div className={style.info}>
+            <button>
+              <img src={icons.comment_icon} alt="comment_icon" />
+            </button>
+            <span>{comments}</span>
           </div>
         </div>
       </div>
