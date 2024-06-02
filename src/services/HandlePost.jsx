@@ -1,15 +1,21 @@
 import axios from "axios";
 
-export const HandlePost = async (userid, postcontent, postimage) => {
+const handlePost = async (userid, postcontent, postimage) => {
   const BASE_URL = "https://tennisly-api-1.onrender.com/posts";
   const likes = 0;
+  const comments = 0;
+  const date = Date.now();
+  const timestamp = new Date(Date.now()).toISOString(); // Convertendo para string
 
   if (postcontent || postimage) {
     try {
       const formData = new FormData();
+      formData.append("timestamp", timestamp);
       formData.append("userid", userid);
       formData.append("postcontent", postcontent);
       formData.append("likes", likes);
+      formData.append("comments", comments);
+
       if (postimage) {
         formData.append("postimage", postimage);
       }
@@ -24,3 +30,5 @@ export const HandlePost = async (userid, postcontent, postimage) => {
     }
   }
 };
+
+export default handlePost;

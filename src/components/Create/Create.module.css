@@ -74,6 +74,18 @@
   color: white;
 }
 
+.cancelBtn button {
+  display: flex;
+  width: 100%;
+  color: #ff253f;
+  padding: 16px 0;
+  justify-content: center;
+  border: var(--secondary-color) 1px solid;
+  border-radius: 5px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
 @media (max-width: 400px) {
   .extraBtn {
     gap: 3%;

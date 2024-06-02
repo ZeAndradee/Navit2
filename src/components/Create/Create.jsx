@@ -3,14 +3,17 @@ import style from "./Create.module.css";
 import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
 import { UserContext } from "../../services/UserContext";
-import { HandlePost } from "../../services/HandlePost";
+import Match from "../Match/Match";
+import { ExtraCardContext } from "../../services/ExtraCardContext";
+import handlePost from "../../services/HandlePost";
+
 const Create = () => {
   const { user } = useContext(UserContext);
-  const [content, setContent] = useState("");
   const userid = user.id;
   const [text, setText] = useState("");
   const [image, setImage] = useState(null);
   const [errMessage, setErrMessage] = useState("");
+  const { extraCard, setExtraCard } = useContext(ExtraCardContext);
 
   useEffect(() => {
     const textarea = document.querySelector("textarea");
@@ -55,7 +58,7 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await HandlePost(userid, text, image);
+      await handlePost(userid, text, image);
       setText("");
       setImage(null);
     } catch (error) {
@@ -65,59 +68,80 @@ const Create = () => {
 
   return (
     <div className={style.createPost}>
-      <div className={style.imgContent}>
-        <div className={style.userImage}>
-          <img src={userimage} alt="userImage" />
-        </div>
-        <div className={style.postContent}>
-          <textarea
-            id="text"
-            value={text}
-            onChange={handleTextChange}
-            placeholder="O que está acontecendo?"
-          />
-        </div>
-      </div>
+      {!extraCard && (
+        <>
+          <div className={style.imgContent}>
+            <div className={style.userImage}>
+              <img src={userimage} alt="userImage" />
+            </div>
+            <div className={style.postContent}>
+              <textarea
+                id="text"
+                value={text}
+                onChange={handleTextChange}
+                placeholder="O que está acontecendo?"
+              />
+            </div>
+          </div>
+        </>
+      )}
+      {extraCard === "partida" && (
+        <>
+          <Match />
+        </>
+      )}
       <div className={style.errMessage}>
         <p style={{ color: "red", fontSize: "13px" }}>{errMessage}</p>
       </div>
-      <div className={style.bottomBtn}>
-        <div className={style.extraBtn}>
-          <button>
-            <img src={icons.tennis_icon} alt="tennis_icon" />
-          </button>
-          <input
-            style={{ display: "none" }}
-            type="file"
-            id="image"
-            accept="image/jpeg,
-            image/png,
-            image/jpg,
-            image/tiff,
-            image/webp,"
-            onChange={handleImageChange}
-            onClick={() => {
-              setErrMessage("");
-            }}
-          />
-          <label className={style.labelImg} htmlFor="image">
-            <img
-              src={icons.image_icon}
-              alt="image_icon"
-              style={{ cursor: "pointer" }}
-            />
-          </label>
-          <button>
-            <img src={icons.emoji_icon} alt="emoji_icon" />
-          </button>
-          <button>
-            <img src={icons.gif_icon} alt="gif_icon" />
-          </button>
-        </div>
-        <button className={style.sendBtn} type="submit" onClick={handleSubmit}>
-          Postar
-        </button>
-      </div>
+      {!extraCard && (
+        <>
+          <div className={style.bottomBtn}>
+            <div className={style.extraBtn}>
+              <button
+                onClick={() => {
+                  setExtraCard("partida");
+                }}
+              >
+                <img src={icons.tennis_icon} alt="tennis_icon" />
+              </button>
+              <input
+                style={{ display: "none" }}
+                type="file"
+                id="image"
+                accept="image/jpeg,
+              image/png,
+              image/jpg,
+              image/tiff,
+              image/webp,"
+                onChange={handleImageChange}
+                onClick={() => {
+                  setErrMessage("");
+                }}
+              />
+              <label className={style.labelImg} htmlFor="image">
+                <img
+                  src={icons.image_icon}
+                  alt="image_icon"
+                  style={{ cursor: "pointer" }}
+                />
+              </label>
+              <button>
+                <img src={icons.emoji_icon} alt="emoji_icon" />
+              </button>
+              <button>
+                <img src={icons.gif_icon} alt="gif_icon" />
+              </button>
+            </div>
+            <button
+              className={style.sendBtn}
+              type="submit"
+              onClick={handleSubmit}
+            >
+              Postar
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

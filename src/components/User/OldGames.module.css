@@ -1,0 +1,76 @@
+.oldGamesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  border: var(--secondary-color) 1px solid;
+}
+
+.header {
+  display: flex;
+  gap: 15px;
+  padding: 10px 15px;
+  border-bottom: var(--secondary-color) 1px solid;
+}
+
+.header span {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.gameSessions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gameSession {
+  display: flex;
+}
+
+.matchSession {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+
+.matchSession:hover {
+  background-color: #1d25310d;
+  cursor: pointer;
+}
+
+.matchCategory {
+  width: 70px;
+}
+
+.usersInfo {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  gap: 10px;
+}
+
+.userInfo {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.userInfo span {
+  width: 70px;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  background-color: #1d2531;
+  border: var(--secondary-color) 1px solid;
+  color: white;
+  border-radius: 5px;
+  font-size: 13px;
+  width: 35px;
+}

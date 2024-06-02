@@ -2,19 +2,30 @@ import axios from "axios";
 
 const getUserPosts = async (userid) => {
   const BASE_URL = "https://tennisly-api-1.onrender.com/posts";
+  const BASE_URL2 = "https://tennisly-api-1.onrender.com/matches";
+
   try {
-    const response = await axios.get(BASE_URL);
-    const userPosts = response.data;
+    const [response1, response2] = await Promise.all([
+      axios.get(BASE_URL),
+      axios.get(BASE_URL2),
+    ]);
+    const userPosts = response1.data;
+    const userMatches = response2.data;
 
     const posts = userPosts.filter((post) => {
-      return post.userid === userid;
+      return post.userid.toString() === userid;
     });
 
-    if (posts) {
+    const matches = userMatches.filter((match) => {
+      return match.idplayer1.toString() === userid;
+      match.idplayer2.toString() === userid;
+    });
+
+    if (posts || matches) {
       return {
         result: true,
-        content: posts,
-        message: "Ocorreu um erro ao fazer a postagem",
+        content: { posts, matches },
+        message: "Postagens e partidas obtidas com sucesso",
       };
     } else {
       throw new Error("Nenhuma postagem encontrada na conta.");

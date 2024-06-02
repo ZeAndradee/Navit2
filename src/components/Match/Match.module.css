@@ -1,0 +1,202 @@
+.matchContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.imgContent {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 15px;
+}
+
+.imgContent img {
+  height: 45px;
+  border-radius: 50%;
+}
+
+.postContent {
+  display: flex;
+  width: 100%;
+}
+
+.postContent textarea {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 400;
+  padding-top: 15px;
+  resize: none;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.inputPlayer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: var(--secondary-color) 1px solid;
+  padding: 12px 8px;
+  border-radius: 5px;
+  gap: 5px;
+}
+
+.inputPlayer span {
+  text-wrap: nowrap;
+}
+.inputPlayer input {
+  border: none;
+  text-wrap: nowrap;
+}
+
+.inputPlus {
+  display: flex;
+  gap: 16px;
+}
+
+.matchInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 45px;
+}
+
+.matchData input::placeholder {
+  /* Ajuste o tamanho do texto do placeholder */
+  white-space: nowrap; /* Impede que o placeholder quebre em várias linhas */
+  overflow: hidden; /* Impede overflow do placeholder */
+  text-overflow: ellipsis; /* Adiciona "..." se o texto for maior que o input */
+}
+
+.matchData {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 5px;
+}
+
+.matchData input {
+  width: 109px;
+  border: var(--secondary-color) 1px solid;
+  border-radius: 5px;
+  padding: 12px 8px;
+}
+
+.matchData select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: var(--secondary-color) 1px solid;
+  border-radius: 5px;
+  padding: 12px 8px;
+  background-color: white; /* Adicione a cor de fundo de volta */
+  outline: none;
+  font-family: "Inter";
+  font-size: 15px;
+  color: var(--text-color);
+}
+
+.matchData option {
+  font-size: 15px;
+}
+
+.matchScores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.matchResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+}
+.matchResults img {
+  width: 35px;
+  border-radius: 50%;
+}
+
+.matchResult {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.matchResult input {
+  width: 50px;
+  border: var(--secondary-color) 1px solid;
+  border-radius: 5px;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.matchResult span {
+  text-wrap: nowrap;
+}
+
+.matchResult input::placeholder {
+  text-align: center;
+}
+
+/* Bottom btn */
+.bottomBtn {
+  display: flex;
+  padding-top: 7px;
+  justify-content: space-between;
+}
+
+.extraBtn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.extraBtn button {
+  display: flex;
+  padding: 2px;
+}
+
+.extraBtn button:hover {
+  background-color: rgba(128, 128, 128, 0.114);
+  border-radius: 5px;
+}
+.extraBtn label {
+  display: flex;
+  padding: 2px;
+}
+
+.extraBtn label:hover {
+  background-color: rgba(128, 128, 128, 0.114);
+  border-radius: 5px;
+}
+
+.labelImg {
+  display: flex;
+}
+
+.sendBtn {
+  display: flex;
+  background-color: var(--text-color2);
+  padding: 7px 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.cancelBtn button {
+  display: flex;
+  width: 100%;
+  color: #ff253f;
+  padding: 16px 0;
+  justify-content: center;
+  border: var(--secondary-color) 1px solid;
+  border-radius: 5px;
+  font-weight: 500;
+  margin-top: 10px;
+}

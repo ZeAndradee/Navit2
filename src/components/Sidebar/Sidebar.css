@@ -1,11 +1,15 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  border-right: var(--secondary-color) 1px solid;
   width: 260px;
-  padding: 20px;
+  padding: 0 20px;
   overflow: auto;
   text-wrap: nowrap;
+  padding-bottom: 20px;
+}
+
+.sidebar:hover::-webkit-scrollbar {
+  width: 6px;
 }
 
 .options {
@@ -52,7 +56,7 @@
   margin-left: 15px;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1271px) {
   .sidebar {
     flex-direction: column;
     width: fit-content;

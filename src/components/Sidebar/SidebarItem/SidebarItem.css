@@ -12,7 +12,8 @@
 }
 
 .sidebaritem:hover {
-  background-color: rgba(128, 128, 128, 0.114);
+  background-color: #1d25310d;
+  cursor: pointer;
 }
 
 .sidebaritem img {

@@ -2,6 +2,7 @@
   display: flex;
   width: 100vw;
   height: 100vh;
+  justify-content: center;
 }
 
 .sidebar-container2 {
@@ -11,7 +12,6 @@
 .profile-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
   overflow: auto;
   align-items: center;
   padding: 0 20px 25px 20px;

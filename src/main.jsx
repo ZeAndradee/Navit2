@@ -13,6 +13,7 @@ import PrivateRoute from "./services/PrivateRoute.jsx";
 import { LoginProvider } from "./services/LoginContext.jsx";
 import { UserProvider } from "./services/UserContext.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
+import { ExtraCardProvider } from "./services/ExtraCardContext.jsx";
 
 //Cria as rotas do site
 const router = createBrowserRouter([
@@ -33,17 +34,19 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/profile",
-    element: <PrivateRoute Rota={ProfilePage} />,
+    path: "/profile/:username",
+    element: <ProfilePage />,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <LoginProvider>
-      <UserProvider>
-        <RouterProvider router={router} />
-      </UserProvider>
-    </LoginProvider>
+    <ExtraCardProvider>
+      <LoginProvider>
+        <UserProvider>
+          <RouterProvider router={router} />
+        </UserProvider>
+      </LoginProvider>
+    </ExtraCardProvider>
   </React.StrictMode>
 );
