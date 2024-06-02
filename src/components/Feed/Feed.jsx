@@ -27,7 +27,6 @@ const Feed = ({ user }) => {
           const { posts, matches } = userPosts.content;
           setPosts(posts);
           setMatches(matches);
-          console.log(matches);
         } else {
           setErrMessage(userPosts.message);
         }
@@ -37,46 +36,53 @@ const Feed = ({ user }) => {
     fetchPosts();
   }, [user]);
 
+  const combinedItems = [
+    ...(posts ? posts.map((post) => ({ ...post, type: "post" })) : []),
+    ...(matches ? matches.map((match) => ({ ...match, type: "match" })) : []),
+  ];
+
+  const sortedItems = combinedItems.sort(
+    (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+  );
+
+  console.log("SortedItems", sortedItems);
+
   return (
     <div className={style.feed}>
       <div className={style.create}>
         <Create />
       </div>
       <div className={style.posts}>
-        {/* {posts &&
-          [...posts]
-            .reverse()
-            .map((post, index) => (
+        {sortedItems &&
+          sortedItems.map((item, index) =>
+            item.type === "post" ? (
               <Posts
                 key={index}
                 userImage={userimage}
                 username={name}
-                postImage={post.postimage}
-                postContent={post.postcontent}
-                likes={post.likes}
-                comments={post.comments}
+                postImage={item.postimage}
+                postContent={item.postcontent}
+                likes={item.likes}
+                comments={item.comments}
               />
-            ))} */}
-        {matches &&
-          [...matches]
-            .reverse()
-            .map((matches, index) => (
+            ) : (
               <Matches
                 key={index}
-                idmatch={matches.idmatch}
-                timestamp={matches.timestamp}
-                idplayer1={matches.idplayer1}
-                idplayer2={matches.idplayer2}
-                sets={matches.sets}
-                matchtime={matches.matchtime}
-                matchplace={matches.matchplace}
-                fscorep1={matches.fscorep1}
-                fscorep2={matches.fscorep2}
-                content={matches.content}
-                likes={matches.likes}
-                comments={matches.comments}
+                idmatch={item.idmatch}
+                timestamp={item.timestamp}
+                idplayer1={item.idplayer1}
+                idplayer2={item.idplayer2}
+                sets={item.sets}
+                matchtime={item.matchtime}
+                matchplace={item.matchplace}
+                fscorep1={item.fscorep1}
+                fscorep2={item.fscorep2}
+                content={item.content}
+                likes={item.likes}
+                comments={item.comments}
               />
-            ))}
+            )
+          )}
       </div>
     </div>
   );

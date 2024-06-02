@@ -8,6 +8,7 @@ import { icons } from "../../assets/Icons/icons";
 import UserPosts from "../../services/UserPosts";
 import { useParams } from "react-router-dom";
 import fetchUserProfile from "../../services/FetchUserProfile";
+import Matches from "../../components/Posts/Matches/Matches";
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -51,6 +52,15 @@ const ProfilePage = () => {
 
     fetchPosts();
   }, [user]);
+
+  const combinedItems = [
+    ...(posts ? posts.map((post) => ({ ...post, type: "post" })) : []),
+    ...(matches ? matches.map((match) => ({ ...match, type: "match" })) : []),
+  ];
+
+  const sortedItems = combinedItems.sort(
+    (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+  );
 
   return (
     <div className="profile-page">
@@ -111,20 +121,36 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className="posts">
-            {posts &&
-              [...posts]
-                .reverse()
-                .map((post, index) => (
+            {sortedItems &&
+              sortedItems.map((item, index) =>
+                item.type === "post" ? (
                   <Posts
                     key={index}
                     userImage={userimage}
                     username={name}
-                    postImage={post.postimage}
-                    postContent={post.postcontent}
-                    likes={post.likes}
-                    comments={post.comments}
+                    postImage={item.postimage}
+                    postContent={item.postcontent}
+                    likes={item.likes}
+                    comments={item.comments}
                   />
-                ))}
+                ) : (
+                  <Matches
+                    key={index}
+                    idmatch={item.idmatch}
+                    timestamp={item.timestamp}
+                    idplayer1={item.idplayer1}
+                    idplayer2={item.idplayer2}
+                    sets={item.sets}
+                    matchtime={item.matchtime}
+                    matchplace={item.matchplace}
+                    fscorep1={item.fscorep1}
+                    fscorep2={item.fscorep2}
+                    content={item.content}
+                    likes={item.likes}
+                    comments={item.comments}
+                  />
+                )
+              )}
           </div>
         </div>
       </div>

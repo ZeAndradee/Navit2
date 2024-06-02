@@ -3,9 +3,9 @@ import style from "./Create.module.css";
 import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
 import { UserContext } from "../../services/UserContext";
-import { HandlePost } from "../../services/HandlePost";
 import Match from "../Match/Match";
 import { ExtraCardContext } from "../../services/ExtraCardContext";
+import handlePost from "../../services/HandlePost";
 
 const Create = () => {
   const { user } = useContext(UserContext);
@@ -58,7 +58,7 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await HandlePost(userid, text, image);
+      await handlePost(userid, text, image);
       setText("");
       setImage(null);
     } catch (error) {

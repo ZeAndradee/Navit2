@@ -21,6 +21,7 @@ const handlePartidas = async (
   p2set5,
   content
 ) => {
+  console.log("epa");
   const likes = 0;
   const comments = 0;
   const BASE_URL = "https://tennisly-api-1.onrender.com/matches";
@@ -31,8 +32,12 @@ const handlePartidas = async (
     if (resPlayer1 && resPlayer2) {
       const player1Id = resPlayer1?.id;
       const player2Id = resPlayer2?.id;
+      const date = Date.now();
+      const timestamp = new Date(date);
+
       try {
         axios.post(BASE_URL, {
+          timestamp,
           idplayer1: player1Id,
           idplayer2: player2Id,
           sets,

@@ -80,20 +80,18 @@ input:focus {
 }
 
 ::-webkit-scrollbar {
-  width: 0px; /* Largura da barra de rolagem vertical */
+  width: 0px;
 }
 
-/* Fundo da barra de rolagem */
 ::-webkit-scrollbar-track {
   background: #f6f5f5;
 }
 
-/* Cor da barra de rolagem */
 ::-webkit-scrollbar-thumb {
   background: var(--secondary-color);
+  border-radius: 5px;
 }
 
-/* Cor da barra de rolagem ao passar o mouse */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-color);
+  background: #87919f;
 }

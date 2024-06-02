@@ -38,6 +38,7 @@ const posts = ({
           <img src={icons.more_icon} alt="more_icon" />
         </div>
       </div>
+
       {postImage && (
         <div className="content">
           <div className="imageContent">
