@@ -5,6 +5,7 @@ import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
 import { ExtraCardContext } from "../../services/ExtraCardContext";
 import handlePartidas from "../../services/HandlePartidas";
+import { PostsContext } from "../../services/PostsContext";
 
 const Match = () => {
   const { user } = useContext(UserContext);
@@ -18,6 +19,7 @@ const Match = () => {
   const [player2, setPlayer2] = useState("");
   const [matchTime, setMatchTime] = useState("");
   const [matchPlace, setMatchPlace] = useState("");
+  const { setRefresh } = useContext(PostsContext);
 
   const [p1set0, setP1Set0] = useState("");
   const [p1set1, setP1Set1] = useState("");
@@ -70,6 +72,7 @@ const Match = () => {
     if (result.result) {
       setExtraCard("");
     }
+    setRefresh(true);
   };
 
   return (
