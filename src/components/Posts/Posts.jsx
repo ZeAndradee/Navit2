@@ -25,6 +25,7 @@ const posts = ({
   let menuRef = useRef();
 
   useEffect(() => {
+    //Click Outside
     let handler = (e) => {
       if (!menuRef?.current?.contains(e.target)) {
         setMoreOption(false);
