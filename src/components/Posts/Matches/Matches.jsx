@@ -86,7 +86,7 @@ const Matches = ({
     <div className={style.matchContainer}>
       <div className={style.headerInfo}>
         <div className={style.imgName}>
-          <img src={p1image} alt="userImage" />
+          <img src={!p1image ? assets.userDefault : p1image} alt="userImage" />
           <p>{p1name}</p>
         </div>
         <button
@@ -110,7 +110,7 @@ const Matches = ({
         </div>
         <div className={style.matchData}>
           <div className={style.matchDataImgW}>
-            <img src={p1image} alt="" />
+            <img src={!p1image ? assets.userDefault : p1image} alt="" />
             <span>{p1name}</span>
           </div>
           <div className={style.score}>
@@ -120,7 +120,7 @@ const Matches = ({
             <span className={style.matchStatus}>Finalizado</span>
           </div>
           <div className={style.matchDataImgL}>
-            <img src={p2image} alt="" />
+            <img src={!p2image ? assets.userDefault : p2image} alt="" />
             <span>{p2name}</span>
           </div>
         </div>
