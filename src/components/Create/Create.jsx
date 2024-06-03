@@ -6,6 +6,7 @@ import { UserContext } from "../../services/UserContext";
 import Match from "../Match/Match";
 import { ExtraCardContext } from "../../services/ExtraCardContext";
 import handlePost from "../../services/HandlePost";
+import { PostsContext } from "../../services/PostsContext";
 
 const Create = () => {
   const { user } = useContext(UserContext);
@@ -14,6 +15,7 @@ const Create = () => {
   const [image, setImage] = useState(null);
   const [errMessage, setErrMessage] = useState("");
   const { extraCard, setExtraCard } = useContext(ExtraCardContext);
+  const { setRefresh } = useContext(PostsContext);
 
   useEffect(() => {
     const textarea = document.querySelector("textarea");
@@ -61,6 +63,7 @@ const Create = () => {
       await handlePost(userid, text, image);
       setText("");
       setImage(null);
+      setRefresh(true);
     } catch (error) {
       console.error("Erro ao criar o post:", error);
     }

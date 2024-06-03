@@ -4,6 +4,7 @@
   border: var(--secondary-color) 1px solid;
   border-radius: 5px;
   width: 100%;
+  position: relative;
 }
 
 .headerInfo {
@@ -155,6 +156,12 @@
   display: flex;
   align-items: center;
   gap: 7px;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
 }
 
 @media (max-width: 740px) {

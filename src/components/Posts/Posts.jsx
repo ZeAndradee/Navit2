@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Posts.css";
 import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
 import { UserContext } from "../../services/UserContext";
 import { Link } from "react-router-dom";
 import handleLikesComments from "../../services/HandleLikesComments";
+import More from "./More/More";
 
 const posts = ({
   postid,
@@ -19,6 +20,23 @@ const posts = ({
 }) => {
   const [liked, setLiked] = useState(true);
   const [newlikes, setNewLikes] = useState(null);
+  const [moreOption, setMoreOption] = useState(false);
+
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setMoreOption(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
 
   const handleLike = () => {
     liked ? setLiked(false) : setLiked(true);
@@ -28,6 +46,10 @@ const posts = ({
       setNewLikes(Likes);
     };
     HandlePostLikesComments();
+  };
+
+  const handleMoreOption = () => {
+    moreOption ? setMoreOption(false) : setMoreOption(true);
   };
 
   const [userimage, setUserImage] = useState("");
@@ -48,13 +70,24 @@ const posts = ({
             <p>{name}</p>
           </div>
         </Link>
-        <div className="more">
+        <button
+          className="more"
+          onClick={() => {
+            handleMoreOption();
+          }}
+          ref={menuRef}
+        >
           <img src={icons.more_icon} alt="more_icon" />
-        </div>
+        </button>
       </div>
 
       {postImage && (
         <div className="content">
+          {moreOption && (
+            <div className="dropdown">
+              <More />
+            </div>
+          )}
           <div className="imageContent">
             <img src={postImage} alt="postImage" />
           </div>
@@ -110,8 +143,14 @@ const posts = ({
           </div>
         </div>
       )}
+
       {!postImage && (
         <div className="content">
+          {moreOption && (
+            <div className="dropdown">
+              <More />
+            </div>
+          )}
           <div className="postContent">
             <span>{postContent}</span>
           </div>

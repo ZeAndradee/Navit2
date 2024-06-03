@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Create from "../Create/Create";
 import Posts from "../Posts/Posts";
 import style from "./Feed.module.css";
 import { assets } from "../../assets/assets";
 import UserPosts from "../../services/UserPosts";
 import Matches from "../Posts/Matches/Matches";
+import { PostsContext } from "../../services/PostsContext";
 
 const Feed = ({ user }) => {
   const [posts, setPosts] = useState(null);
   const [matches, setMatches] = useState(null);
   const [userimage, setUserImage] = useState("");
   const [errMessage, setErrMessage] = useState("");
+  const { refresh, setRefresh } = useContext(PostsContext);
 
   const name = user?.name ?? "username";
   const username = user?.username ?? "username";
+
   useEffect(() => {
     if (user?.userimage) {
       setUserImage(user?.userimage);
@@ -37,7 +40,8 @@ const Feed = ({ user }) => {
     };
 
     fetchPosts();
-  }, [user]);
+    setRefresh(false);
+  }, [user, refresh]);
 
   const combinedItems = [
     ...(posts ? posts.map((post) => ({ ...post, type: "post" })) : []),

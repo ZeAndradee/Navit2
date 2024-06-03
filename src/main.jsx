@@ -14,6 +14,7 @@ import { LoginProvider } from "./services/LoginContext.jsx";
 import { UserProvider } from "./services/UserContext.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
 import { ExtraCardProvider } from "./services/ExtraCardContext.jsx";
+import { PostsProvider } from "./services/PostsContext.jsx";
 
 //Cria as rotas do site
 const router = createBrowserRouter([
@@ -41,12 +42,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ExtraCardProvider>
-      <LoginProvider>
-        <UserProvider>
-          <RouterProvider router={router} />
-        </UserProvider>
-      </LoginProvider>
-    </ExtraCardProvider>
+    <PostsProvider>
+      <ExtraCardProvider>
+        <LoginProvider>
+          <UserProvider>
+            <RouterProvider router={router} />
+          </UserProvider>
+        </LoginProvider>
+      </ExtraCardProvider>
+    </PostsProvider>
   </React.StrictMode>
 );

@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import fetchUserProfile from "../../services/FetchUserProfile";
 import Matches from "../../components/Posts/Matches/Matches";
 import getUserPosts from "../../services/UserPosts";
+import { PostsContext } from "../../services/PostsContext";
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -23,6 +24,7 @@ const ProfilePage = () => {
   const [userPostsData, setUserPostsData] = useState(0);
   const [userTorneiosData, setUserTorneiosData] = useState(0);
   const [userMatchesData, setUserMatchesData] = useState(0);
+  const { refresh, setRefresh } = useContext(PostsContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,8 +58,9 @@ const ProfilePage = () => {
         setErrMessage(userPosts.message);
       }
     };
+    setRefresh(false);
     fetchPosts();
-  }, [user]);
+  }, [user, refresh]);
 
   const combinedItems = [
     ...(posts ? posts.map((post) => ({ ...post, type: "post" })) : []),
