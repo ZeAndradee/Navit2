@@ -75,7 +75,6 @@ const posts = ({
           onClick={() => {
             handleMoreOption();
           }}
-          ref={menuRef}
         >
           <img src={icons.more_icon} alt="more_icon" />
         </button>
@@ -84,8 +83,8 @@ const posts = ({
       {postImage && (
         <div className="content">
           {moreOption && (
-            <div className="dropdown">
-              <More />
+            <div className="dropdown" ref={menuRef}>
+              <More postid={postid} userid={userid} type={0} />
             </div>
           )}
           <div className="imageContent">
@@ -147,8 +146,8 @@ const posts = ({
       {!postImage && (
         <div className="content">
           {moreOption && (
-            <div className="dropdown">
-              <More />
+            <div className="dropdown" ref={menuRef}>
+              <More postid={postid} userid={userid} type={0} />
             </div>
           )}
           <div className="postContent">

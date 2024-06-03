@@ -31,6 +31,8 @@ import rewind_icon from "./rewind_icon.svg";
 import liked_icon from "./liked_icon.svg";
 import pencil_icon from "./pencil_icon.svg";
 import trash_icon from "./trash_icon.svg";
+import share_icon from "./share_icon.svg";
+import danger_icon from "./danger_icon.svg";
 
 export const icons = {
   home_icon,
@@ -66,4 +68,6 @@ export const icons = {
   liked_icon,
   pencil_icon,
   trash_icon,
+  share_icon,
+  danger_icon,
 };

@@ -101,8 +101,8 @@ const Matches = ({
       </div>
       <div className={style.matchResult}>
         {moreOption && (
-          <div className={style.dropdown}>
-            <More />
+          <div className={style.dropdown} ref={menuRef}>
+            <More postid={idmatch} userid={idplayer1} type={1} />
           </div>
         )}
         <div className={style.headerMatch}>
