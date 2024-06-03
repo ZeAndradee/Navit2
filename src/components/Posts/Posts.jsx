@@ -26,7 +26,7 @@ const posts = ({
 
   useEffect(() => {
     let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
+      if (!menuRef?.current?.contains(e.target)) {
         setMoreOption(false);
       }
     };
