@@ -5,6 +5,7 @@ import { icons } from "../../assets/Icons/icons";
 import { UserContext } from "../../services/UserContext";
 import { Link } from "react-router-dom";
 import handleLikesComments from "../../services/HandleLikesComments";
+import More from "./More/More";
 
 const posts = ({
   postid,
@@ -19,7 +20,7 @@ const posts = ({
 }) => {
   const [liked, setLiked] = useState(true);
   const [newlikes, setNewLikes] = useState(null);
-
+  const [moreOption, setMoreOption] = useState(false);
   const handleLike = () => {
     liked ? setLiked(false) : setLiked(true);
 
@@ -28,6 +29,10 @@ const posts = ({
       setNewLikes(Likes);
     };
     HandlePostLikesComments();
+  };
+
+  const handleMoreOption = () => {
+    moreOption ? setMoreOption(false) : setMoreOption(true);
   };
 
   const [userimage, setUserImage] = useState("");
@@ -48,13 +53,23 @@ const posts = ({
             <p>{name}</p>
           </div>
         </Link>
-        <div className="more">
+        <button
+          className="more"
+          onClick={() => {
+            handleMoreOption();
+          }}
+        >
           <img src={icons.more_icon} alt="more_icon" />
-        </div>
+        </button>
       </div>
 
       {postImage && (
         <div className="content">
+          {moreOption && (
+            <div className="dropdown">
+              <More />
+            </div>
+          )}
           <div className="imageContent">
             <img src={postImage} alt="postImage" />
           </div>
@@ -110,8 +125,14 @@ const posts = ({
           </div>
         </div>
       )}
+
       {!postImage && (
         <div className="content">
+          {moreOption && (
+            <div className="dropdown">
+              <More />
+            </div>
+          )}
           <div className="postContent">
             <span>{postContent}</span>
           </div>

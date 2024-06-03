@@ -29,9 +29,13 @@ button {
   font-family: "Inter";
   color: var(--text-color);
   font-size: 15px;
-  cursor: pointer;
+
   text-wrap: nowrap;
   -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 p {
