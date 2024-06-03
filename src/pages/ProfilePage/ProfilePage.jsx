@@ -1,23 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Posts from "../../components/Posts/Posts";
 import "./ProfilePage.css";
 import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
-import UserPosts from "../../services/UserPosts";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import fetchUserProfile from "../../services/FetchUserProfile";
 import Matches from "../../components/Posts/Matches/Matches";
 import getUserPosts from "../../services/UserPosts";
 import { PostsContext } from "../../services/PostsContext";
+import { UserContext } from "../../services/UserContext";
+import EditProfile from "../../components/EditProfile/EditProfile";
 
 const ProfilePage = () => {
   const { username } = useParams();
-  const [user, setUser] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
   const [userimage, setUserImage] = useState("");
-  const name = user?.name ?? "username";
-  const userBio = user?.userbio ?? "Carregando...";
+  const name = userProfile?.name ?? "username";
+  const userBio = userProfile?.userbio ?? "Carregando...";
   const [errMessage, setErrMessage] = useState(null);
   const [posts, setPosts] = useState(null);
   const [matches, setMatches] = useState(null);
@@ -25,14 +25,32 @@ const ProfilePage = () => {
   const [userTorneiosData, setUserTorneiosData] = useState(0);
   const [userMatchesData, setUserMatchesData] = useState(0);
   const { refresh, setRefresh } = useContext(PostsContext);
+  const { user } = useContext(UserContext);
+  const [editProfile, setEditProfile] = useState(false);
+  const navigate = useNavigate();
+  let menuRef = useRef();
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setEditProfile(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       const userProfile = await fetchUserProfile(username);
       if (userProfile) {
-        setUser(userProfile);
+        setUserProfile(userProfile);
       }
     };
+
     fetchData();
   }, [username]);
 
@@ -42,11 +60,11 @@ const ProfilePage = () => {
     } else {
       setUserImage(assets.userDefault);
     }
-  }, [user]);
+  }, [userProfile]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const userPosts = await getUserPosts(user?.id?.toString());
+      const userPosts = await getUserPosts(userProfile?.id?.toString());
       if (userPosts.result) {
         const { posts, matches, userAllPosts, userMatchesData } =
           userPosts.content;
@@ -60,7 +78,7 @@ const ProfilePage = () => {
     };
     setRefresh(false);
     fetchPosts();
-  }, [user, refresh]);
+  }, [userProfile, refresh]);
 
   const combinedItems = [
     ...(posts ? posts.map((post) => ({ ...post, type: "post" })) : []),
@@ -71,8 +89,19 @@ const ProfilePage = () => {
     (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
   );
 
+  const HandlePerfil = () => {
+    editProfile ? setEditProfile(false) : setEditProfile(true);
+  };
+
   return (
     <div className="profile-page">
+      {editProfile && (
+        <div className="editContainer">
+          <div ref={menuRef}>
+            <EditProfile />
+          </div>
+        </div>
+      )}
       <div className="sidebar-container2">
         <Sidebar />
       </div>
@@ -89,7 +118,9 @@ const ProfilePage = () => {
                     <p>{name}</p>
                     <span>@{username}</span>
                   </div>
-                  <button>Editar Perfil</button>
+                  {user?.username == username && (
+                    <button onClick={HandlePerfil}>Editar Perfil</button>
+                  )}
                 </div>
                 <div className="userinfo">
                   <div className="data">

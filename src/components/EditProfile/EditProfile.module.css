@@ -1,0 +1,49 @@
+.editCard {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 500px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--text-color2);
+  padding: 10px 15px;
+  border-radius: 5px 5px 0 0;
+}
+
+.header span {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.header button {
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.editInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px 15px;
+}
+
+.editInfo img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.changeInput {
+  display: flex;
+  flex-direction: column;
+  border: var(--secondary-color) 1px solid;
+  border-radius: 5px;
+  padding: 5px 10px;
+}

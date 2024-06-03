@@ -10,6 +10,7 @@
 }
 
 .profile-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -140,6 +141,17 @@
   align-items: center;
   margin-top: 50px;
   gap: 30px;
+}
+
+.editContainer {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  background-color: #02244161;
 }
 
 @media (max-width: 768px) {
