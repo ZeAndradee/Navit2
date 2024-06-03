@@ -12,7 +12,7 @@ const LoginPage = () => {
   const [LocalPassword, setLocalPassword] = useState("");
   const [LoginError, setLoginError] = useState("");
   const { setAlreadyLogged } = useContext(LoginContext);
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [typed, setTyped] = useState(false);
 
@@ -24,11 +24,22 @@ const LoginPage = () => {
     }
   }, [LocalUsername, LocalPassword]);
 
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      const userObject = JSON.parse(savedUser);
+      setUser(userObject);
+      setAlreadyLogged(true);
+      navigate("/");
+    }
+  }, [setUser, setAlreadyLogged, navigate]);
+
   const handleLogin = async () => {
     const localUser = await fetchUser(LocalUsername, LocalPassword);
 
     if (localUser) {
       setUser(localUser);
+      localStorage.setItem("user", JSON.stringify(localUser));
       setAlreadyLogged(true);
       navigate("/");
     } else {

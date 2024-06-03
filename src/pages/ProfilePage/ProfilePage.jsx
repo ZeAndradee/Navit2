@@ -25,10 +25,18 @@ const ProfilePage = () => {
   const [userTorneiosData, setUserTorneiosData] = useState(0);
   const [userMatchesData, setUserMatchesData] = useState(0);
   const { refresh, setRefresh } = useContext(PostsContext);
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [editProfile, setEditProfile] = useState(false);
   const navigate = useNavigate();
   let menuRef = useRef();
+
+  useEffect(() => {
+    if (!user) {
+      const savedUser = localStorage.getItem("user");
+      setUser(savedUser);
+    }
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -55,8 +63,8 @@ const ProfilePage = () => {
   }, [username]);
 
   useEffect(() => {
-    if (user?.userimage) {
-      setUserImage(user?.userimage);
+    if (userProfile?.userimage) {
+      setUserImage(userProfile?.userimage);
     } else {
       setUserImage(assets.userDefault);
     }
