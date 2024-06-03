@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Posts.css";
 import { assets } from "../../assets/assets";
 import { icons } from "../../assets/Icons/icons";
@@ -21,6 +21,23 @@ const posts = ({
   const [liked, setLiked] = useState(true);
   const [newlikes, setNewLikes] = useState(null);
   const [moreOption, setMoreOption] = useState(false);
+
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setMoreOption(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
   const handleLike = () => {
     liked ? setLiked(false) : setLiked(true);
 
@@ -58,6 +75,7 @@ const posts = ({
           onClick={() => {
             handleMoreOption();
           }}
+          ref={menuRef}
         >
           <img src={icons.more_icon} alt="more_icon" />
         </button>

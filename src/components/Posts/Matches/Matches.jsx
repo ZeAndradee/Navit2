@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import style from "./Matches.module.css";
 import { assets } from "../../../assets/assets";
 import { icons } from "../../../assets/Icons/icons";
 import fetchUserProfile from "../../../services/FetchUserProfile";
 import handleLikesComments from "../../../services/HandleLikesComments";
+import More from "../More/More";
 
 const Matches = ({
   idmatch,
@@ -30,6 +31,27 @@ const Matches = ({
 
   const [liked, setLiked] = useState(true);
   const [newlikes, setNewLikes] = useState(null);
+  const [moreOption, setMoreOption] = useState(false);
+
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setMoreOption(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
+  const handleMoreOption = () => {
+    moreOption ? setMoreOption(false) : setMoreOption(true);
+  };
 
   const handleLike = () => {
     liked ? setLiked(false) : setLiked(true);
@@ -67,11 +89,22 @@ const Matches = ({
           <img src={p1image} alt="userImage" />
           <p>{p1name}</p>
         </div>
-        <div className={style.more}>
+        <button
+          className={style.more}
+          onClick={() => {
+            handleMoreOption();
+          }}
+          ref={menuRef}
+        >
           <img src={icons.more_icon} alt="more_icon" />
-        </div>
+        </button>
       </div>
       <div className={style.matchResult}>
+        {moreOption && (
+          <div className={style.dropdown}>
+            <More />
+          </div>
+        )}
         <div className={style.headerMatch}>
           <span>Resultado da Partida</span>
         </div>
