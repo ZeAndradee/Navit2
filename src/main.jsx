@@ -44,11 +44,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <PostsProvider>
       <ExtraCardProvider>
-        <LoginProvider>
-          <UserProvider>
+        <UserProvider>
+          <LoginProvider>
             <RouterProvider router={router} />
-          </UserProvider>
-        </LoginProvider>
+          </LoginProvider>
+        </UserProvider>
       </ExtraCardProvider>
     </PostsProvider>
   </React.StrictMode>

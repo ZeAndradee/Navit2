@@ -3,34 +3,37 @@ import { assets } from "../../assets/assets";
 import SidebarItem from "./SidebarItem/SidebarItem";
 import "./Sidebar.css";
 import { icons } from "../../assets/Icons/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../services/UserContext";
 import { LoginContext } from "../../services/LoginContext";
 
 const Sidebar = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { setAlreadyLogged } = useContext(LoginContext);
-  const name = user?.name ?? "Carregando...";
-  const username = user?.username ?? "Carregando...";
-  const userImage = user?.userimage ?? "Carregando...";
+  const [name, setName] = useState("Carregando");
+  const [username, setUsername] = useState("Carregando");
+  const [userImage, setUserImage] = useState(assets.userDefault);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
     setAlreadyLogged(false);
+    navigate("/login");
   };
 
-  const [userimage, setUserImage] = useState("");
   useEffect(() => {
-    if (user?.userimage) {
+    if (user) {
+      setName(user?.name);
+      setUsername(user?.username);
       setUserImage(user?.userimage);
-    } else {
-      setUserImage(assets.userDefault);
     }
   }, [user]);
 
   return (
     <div className="sidebar">
       <div className="header">
-        <img src={userimage} alt="User Profile Pic" />
+        <img src={userImage} alt="User Profile Pic" />
         <div className="namenick">
           <p className="name">
             <b>{name}</b>
