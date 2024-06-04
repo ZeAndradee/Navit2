@@ -26,6 +26,7 @@
 
 .side-container {
   display: flex;
+  overflow-y: auto;
   padding-top: 30px;
   flex-direction: column;
   height: 100%;
