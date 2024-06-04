@@ -12,6 +12,13 @@
   padding-bottom: 15px;
 }
 
+.loading {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  justify-content: center;
+}
+
 @media (max-width: 740px) {
   .feed {
     width: 100%;

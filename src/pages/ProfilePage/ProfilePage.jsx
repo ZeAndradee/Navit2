@@ -11,6 +11,7 @@ import getUserPosts from "../../services/UserPosts";
 import { PostsContext } from "../../services/PostsContext";
 import { UserContext } from "../../services/UserContext";
 import EditProfile from "../../components/EditProfile/EditProfile";
+import { MoonLoader } from "react-spinners";
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -27,15 +28,10 @@ const ProfilePage = () => {
   const { refresh, setRefresh } = useContext(PostsContext);
   const { user, setUser } = useContext(UserContext);
   const [editProfile, setEditProfile] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   const navigate = useNavigate();
   let menuRef = useRef();
-
-  useEffect(() => {
-    if (!user) {
-      const savedUser = localStorage.getItem("user");
-      setUser(savedUser);
-    }
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -72,16 +68,23 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
+      setIsLoading(true);
       const userPosts = await getUserPosts(userProfile?.id?.toString());
-      if (userPosts.result) {
-        const { posts, matches, userAllPosts, userMatchesData } =
-          userPosts.content;
-        setPosts(posts);
-        setMatches(matches);
-        setUserPostsData(userAllPosts);
-        setUserMatchesData(userMatchesData);
-      } else {
-        setErrMessage(userPosts.message);
+      try {
+        if (userPosts.result) {
+          const { posts, matches, userAllPosts, userMatchesData } =
+            userPosts.content;
+          setPosts(posts);
+          setMatches(matches);
+          setUserPostsData(userAllPosts);
+          setUserMatchesData(userMatchesData);
+        } else {
+          setErrMessage(userPosts.message);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     setRefresh(false);
@@ -169,7 +172,8 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className="posts">
-            {sortedItems &&
+            {!isLoading &&
+              sortedItems &&
               sortedItems.map((item, index) =>
                 item.type === "post" ? (
                   <Posts
@@ -202,6 +206,11 @@ const ProfilePage = () => {
                   />
                 )
               )}
+            {isLoading && (
+              <div className="loading">
+                <MoonLoader size={30} color="#3694e7" />
+              </div>
+            )}
           </div>
         </div>
       </div>
