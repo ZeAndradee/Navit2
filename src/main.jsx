@@ -15,13 +15,14 @@ import { UserProvider } from "./services/UserContext.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
 import { ExtraCardProvider } from "./services/ExtraCardContext.jsx";
 import { PostsProvider } from "./services/PostsContext.jsx";
+import Error404 from "./pages/ErrorPage/Error404.jsx";
 
 //Cria as rotas do site
 const router = createBrowserRouter([
   {
     path: "/",
     element: <PrivateRoute Rota={HomePage} />,
-    errorElement: <p>Olá, essa página não foi encontrada :(</p>,
+    errorElement: <Error404 />,
   },
 
   {
