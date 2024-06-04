@@ -139,7 +139,7 @@ const posts = ({
           </div>
           <div className="postContent">
             <p>{name}</p>
-            <span>{postContent}</span>
+            <p>{postContent}</p>
           </div>
         </div>
       )}
@@ -152,7 +152,7 @@ const posts = ({
             </div>
           )}
           <div className="postContent">
-            <span>{postContent}</span>
+            <p>{postContent}</p>
           </div>
           <div className="postInfo">
             <div className="likesComments">
