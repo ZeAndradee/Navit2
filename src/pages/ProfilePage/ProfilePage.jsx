@@ -174,6 +174,8 @@ const ProfilePage = () => {
                 item.type === "post" ? (
                   <Posts
                     key={index}
+                    postid={item.postid}
+                    userid={item.userid}
                     userImage={userimage}
                     name={name}
                     username={username}
