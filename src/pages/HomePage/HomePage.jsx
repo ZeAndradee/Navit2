@@ -55,6 +55,19 @@ const ProfilePage = () => {
         <div className="old-games">
           <OldGames />
         </div>
+        <div className="rights">
+          <div className="rightsrow">
+            <span>Termos de Serviço</span>
+            <span>Política de Privacidade</span>
+          </div>
+          <div className="rightsrow">
+            <span>Política de cookies</span>
+            <span>Acessibilidade</span>
+          </div>
+          <div className="rightsrow">
+            <span>© 2024 Tennis.ly Corp.</span>
+          </div>
+        </div>
       </div>
     </div>
   );
