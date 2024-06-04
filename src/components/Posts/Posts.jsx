@@ -65,7 +65,7 @@ const posts = ({
   return (
     <div className="post-card">
       <div className="header-info">
-        <Link to={`/profile/${username}`}>
+        <Link to={`/${username}`}>
           <div className="img-name">
             <img src={userImage} alt="userImage" />
             <p>{name}</p>
@@ -139,7 +139,7 @@ const posts = ({
           </div>
           <div className="postContent">
             <p>{name}</p>
-            <p>{postContent}</p>
+            <span>{postContent}</span>
           </div>
         </div>
       )}
@@ -152,7 +152,7 @@ const posts = ({
             </div>
           )}
           <div className="postContent">
-            <p>{postContent}</p>
+            <span>{postContent}</span>
           </div>
           <div className="postInfo">
             <div className="likesComments">

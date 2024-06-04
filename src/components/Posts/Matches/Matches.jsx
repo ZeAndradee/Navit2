@@ -5,6 +5,7 @@ import { icons } from "../../../assets/Icons/icons";
 import fetchUserProfile from "../../../services/FetchUserProfile";
 import handleLikesComments from "../../../services/HandleLikesComments";
 import More from "../More/More";
+import { Link } from "react-router-dom";
 
 const Matches = ({
   idmatch,
@@ -85,10 +86,15 @@ const Matches = ({
   return (
     <div className={style.matchContainer}>
       <div className={style.headerInfo}>
-        <div className={style.imgName}>
-          <img src={!p1image ? assets.userDefault : p1image} alt="userImage" />
-          <p>{p1name}</p>
-        </div>
+        <Link to={`/${p1username}`}>
+          <div className={style.imgName}>
+            <img
+              src={!p1image ? assets.userDefault : p1image}
+              alt="userImage"
+            />
+            <p>{p1name}</p>
+          </div>
+        </Link>
         <button
           className={style.more}
           onClick={() => {
