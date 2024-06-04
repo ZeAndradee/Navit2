@@ -183,7 +183,7 @@ const LoginPage = () => {
                   </Link>
                 </div>
                 <div className={styles.rightquest}>
-                  <Link to={"recovery/forgotpassword"}>
+                  <Link to={"/recovery/forgotpassword"}>
                     <p>Esqueceu sua senha?</p>
                   </Link>
                 </div>
