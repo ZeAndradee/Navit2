@@ -44,10 +44,23 @@ Tennis.ly é mais do que uma rede social; é uma plataforma para crescimento e i
 
 # ⚙ Como Executar a Aplicação:
 
+**Deploy Online:**
+
+Acessar: https://tennis-ly.vercel.app/ 
+<br/>
+
+
+⏳ (**O login pode demorar alguns segundos (normalmente 40s) pois a API fica inativa quando não está sendo acessada.**)
+
+<br/>
+
+**Localmente:**
+
+
 * Git clone 
 * Acessar o diretorio clonado, utilize o git bash
 * npm i
-* npm run dev
+* npm start
 
 # :hammer: Funcionalidades e Demonstração da Aplicação
 `Tela de Login`: <p>Tela de login inicial</p> 
